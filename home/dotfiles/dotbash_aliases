@@ -1,0 +1,19 @@
+################################################################################
+# Useful aliases for making life easier
+################################################################################
+alias ls='ls --human-readable --ignore-backups --color=auto'
+alias ll='ls -l -h'
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias swp="rm *~"
+alias du="du -h"
+alias maxsize="du -m --max-depth=1 | sort -k1nr"
+alias df="df -h"
+# emacs text-mode
+alias nmacs="emacs -nw"
+# turn off lcd
+alias lcdoff="xset dpms force off"
+
+# Functions
+function mkdirandcd { mkdir -p "$1"; cd "$1"; }

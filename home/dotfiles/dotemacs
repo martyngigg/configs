@@ -1,0 +1,36 @@
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+
+;; file associations
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.hh\\'" . c++-mode))
+
+;; set BSD style indentation for C/C++ code
+(setq c-default-style "bsd"
+      c-basic-offset 2)
+
+;; only spaces, no tabs
+(setq indent-tabs-mode nil)
+
+;; ask about newline
+(setq require-final-newline 'ask)
+
+;; visual bell instead of annoying beep
+(setq visible-bell t)
+
+;; change key associations
+(global-set-key "\C-x\C-l" 'goto-line)
+
+;; change save interval from 300 to 1000
+;; keystrokes so it isn't so annoying
+(setq auto-save-interval 1000)
