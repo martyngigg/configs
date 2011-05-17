@@ -17,7 +17,7 @@ export HISTCONTROL HISTIGNORE
 shopt -s cdspell 
 
 # Other environment settings
-if [ test -f ~/.bash_env ]; then
+if [ -f ~/.bash_env ]; then
     . ~/.bash_env
 fi
 
