@@ -1,3 +1,4 @@
+# -*-shell-script-*-; Tells emacs to load this as a bash script
 ################################################################################
 # More personalized bash configuration
 ################################################################################
@@ -15,7 +16,9 @@ export HISTCONTROL HISTIGNORE
 # Correct simple mispellings in bash commands
 shopt -s cdspell 
 
-# Paths
-export CPATH=$HOME/opt/nexus-4.2.1/include
+# Other environment settings
+if [ test -f ~/.bash_env ];
+    . ~/.bash_env
+fi
 
 
