@@ -1,36 +1,59 @@
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+;; Inhibit splash screen
+(setq inhibit-splash-screen t)
 
-;; file associations
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.hh\\'" . c++-mode))
+;; Remove the toolbar
+(tool-bar-mode -1)
 
-;; set BSD style indentation for C/C++ code
+;;Disable ctrl-z behaviour
+(global-set-key "\C-z" nil)
+
+;; Enable syntax highlighting for appropriate modes
+(global-font-lock-mode t)
+;; Enable visual feedback upon selection
+(setq transient-mark-mode t)
+;; Enable column number mode
+(setq column-number-mode t)
+
+;;Set-up some keys globally
+(global-set-key "\C-xl" 'goto-line)
+(global-set-key "\C-cu" 'uncomment-region)
+(global-set-key "\C-ci" 'indent-region)
+
+(require 'cl) ;;gives unless command
+;; Needed to get bash ctrl-left/ctrl-right working
+(unless window-system 
+  (global-set-key "\e[;5D" 'backward-word)
+  (global-set-key "\e[5C" 'forward-word)
+  (global-set-key "\e[1;5F" 'end-of-buffer)
+  (global-set-key "\e[1;5H" 'beginning-of-buffer))
+
+;;turn on mouse wheel
+(if (load "mwheel" t)
+	(mwheel-install))
+
+;;ask about newline at end of text files
+(setq require-final-newline 'query)
+
+;; Load british dictionary by default with my preferences file
+(setq ispell-dictionary "british")
+
+;; Set some file associations
+(setq auto-mode-alist (cons '("\\.C$" . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.cc$" . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.c$" . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.h$" . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.cpp$" . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.cxx$" . c++-mode) auto-mode-alist))
+
+;; Set BSD style indent with a default of 2 spaces per tab for global things
 (setq c-default-style "bsd"
       c-basic-offset 2)
 
-;; only spaces, no tabs
-(setq indent-tabs-mode nil)
+;; No tabs specifically for CMake
+(setq cmake-mode-hook
+    (function (lambda ()
+                (setq indent-tabs-mode nil))))
 
-;; ask about newline
-(setq require-final-newline 'ask)
-
-;; visual bell instead of annoying beep
-(setq visible-bell t)
-
-;; change key associations
-(global-set-key "\C-x\C-l" 'goto-line)
-
-;; change save interval from 300 to 1000
+;; Change save interval from 300 to 1000
 ;; keystrokes so it isn't so annoying
 (setq auto-save-interval 1000)
