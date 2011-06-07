@@ -14,10 +14,14 @@
 ;; Enable column number mode
 (setq column-number-mode t)
 
-;;Set-up some keys globally
+;; Set-up some keys globally
 (global-set-key "\C-xl" 'goto-line)
 (global-set-key "\C-cu" 'uncomment-region)
 (global-set-key "\C-ci" 'indent-region)
+(global-set-key [f3] 'grep-find)
+;; Tell grep-find to ignore svn directories
+(setq grep-find-command
+  "find . -path '*/.svn' -prune -o -type f -print | xargs -e grep -I -n -e ")
 
 (require 'cl) ;;gives unless command
 ;; Needed to get bash ctrl-left/ctrl-right working
@@ -49,10 +53,55 @@
 (setq c-default-style "bsd"
       c-basic-offset 2)
 
-;; No tabs specifically for CMake
-(setq cmake-mode-hook
-    (function (lambda ()
-                (setq indent-tabs-mode nil))))
+;; Turn off use of tabs for indentation in many modes
+(setq indent-tabs-mode nil) 
+
+;; If indent-tabs-mode is off, untabify before saving
+(add-hook 'write-file-hooks 
+          (lambda () 
+	    (if (not indent-tabs-mode)
+		(untabify (point-min) (point-max)))))
+
+;; LaTeX mode
+(add-hook 'latex-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
+;; C mode
+(add-hook 'c-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
+;; C++ mode
+(add-hook 'c++-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
+;; CMake mode
+(add-hook 'cmake-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
+;; Python mode
+(add-hook 'python-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
+;; Fortran mode
+(add-hook 'fortran-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
+;; perl mode
+(add-hook 'perl-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
+;; Lisp mode
+(add-hook 'lisp-mode-hook 
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     ))
 
 ;; Change save interval from 300 to 1000
 ;; keystrokes so it isn't so annoying
