@@ -57,10 +57,10 @@
 (setq indent-tabs-mode nil) 
 
 ;; If indent-tabs-mode is off, untabify before saving
-(add-hook 'write-file-hooks 
-          (lambda () 
-	    (if (not indent-tabs-mode)
-		(untabify (point-min) (point-max)))))
+;; (add-hook 'write-file-hooks 
+;;           (lambda () 
+;; 	    (if (not indent-tabs-mode)
+;; 		(untabify (point-min) (point-max)))))
 
 ;; LaTeX mode
 (add-hook 'latex-mode-hook 
