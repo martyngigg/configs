@@ -36,5 +36,7 @@ helgrind () {
 }
 
 # Fix up eclipse project to build with given number of cores
-function patch_cproj { sed -i -e 's@<buildArguments/>@<buildArguments>-j$2</buildArguments>@g' "$1" ;}
+patch_cproj () { 
+    sed -i -e "s@<buildArguments/>@<buildArguments>-j$2</buildArguments>@g" "$1" 
+}
 
