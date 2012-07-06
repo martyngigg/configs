@@ -1,17 +1,40 @@
-################################################################################
-# Useful aliases for making life easier
-################################################################################
+## Aliases to make life easier :)
 alias ls='ls --human-readable --ignore-backups --color=auto'
 alias ll='ls -l -h'
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
-alias swp="rm *~"
+
 alias du="du -h"
 alias maxsize="du -m --max-depth=1 | sort -k1nr"
 alias df="df -h"
-# emacs text-mode
+
+## emacs text-mode
 alias nmacs="emacs -nw"
 
-# Functions
+# clues in the name
 function mkdirandcd { mkdir -p "$1"; cd "$1"; }
+
+# Remove all files ending in "~", below the current directory
+function cleanemacsfiles { find . -type f \( -name '*~' \) -print0 | xargs -0 -I\{\} rm \{\} ;}
+alias swp="cleanemacsfiles"
+
+# Make ctest to include --output-on-failure
+alias ctest="ctest --output-on-failure"
+
+# Run memcheck with standard options
+alias memgrind="valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --freelist-vol=500000000 -v -v"
+
+# Run valgrind with helgrind checker, warning about custom gcc
+helgrind () { 
+    echo "!!WARNING: Have you set the path to the custom gcc build!!"
+    if [ $# -lt 2 ]; then
+        echo "Usage: helgrind logfile program [arguments...]"
+    else
+        valgrind --tool=helgrind --num-callers=20 --log-file=$1 $2
+    fi
+}
+
+# Fix up eclipse project to build with given number of cores
+function patch_cproj { sed -i -e 's@<buildArguments/>@<buildArguments>-j$2</buildArguments>@g' "$1" ;}
+

@@ -8,9 +8,12 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # Terminal prompt
 PS1='\[\033[01;31m\]\u@\h\[\033[01;34m\] \W$(__git_ps1 " (%s)") \$ \[\033[00m\]'
 
+# Terminal title
+export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
+
 # Better history control
 HISTCONTROL=ignoreboth
-HISTIGNORE="&:ls:[bf]g:exit"
+HISTIGNORE="&:ls:[bf]g:exit:[ \t]*"
 export HISTCONTROL HISTIGNORE
 
 # Correct simple mispellings in bash commands
