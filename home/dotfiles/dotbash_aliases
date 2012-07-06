@@ -31,8 +31,9 @@ helgrind () {
     if [ $# -lt 2 ]; then
         echo "Usage: helgrind logfile program [arguments...]"
     else
+        logfile=$1
 	shift 1 # Eat the logfile argument
-        valgrind --tool=helgrind --num-callers=20 --log-file=$1 $@
+        valgrind --tool=helgrind --num-callers=20 --log-file=$logfile $@
     fi
 }
 
