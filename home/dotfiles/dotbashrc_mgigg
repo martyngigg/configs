@@ -19,6 +19,13 @@ export HISTCONTROL HISTIGNORE
 # Correct simple mispellings in bash commands
 shopt -s cdspell 
 
+# If ccache exists, update the path to find it
+if [ -f /usr/bin/ccache ]; then
+    export PATH=/usr/lib/ccache:${PATH}
+else
+    echo "Warning: CCache is not installed!"
+fi
+
 # Other environment settings
 if [ -f ~/.bash_env ]; then
     . ~/.bash_env
