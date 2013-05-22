@@ -20,7 +20,7 @@ function cleanemacsfiles { find . -type f \( -name '*~' \) -print0 | xargs -0 -I
 alias swp="cleanemacsfiles"
 
 # Make ctest to include --output-on-failure
-alias ctest="ctest --output-on-failure"
+alias ctest="ctest --output-on-failure -j8"
 
 # Git
 alias gs="git status"
@@ -29,6 +29,9 @@ alias gp="git push"
 
 # Run memcheck with standard options
 alias memgrind="valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --freelist-vol=500000000 -v -v"
+
+# Run callgrind with usuable options
+alias callgrind="valgrind --tool=callgrind --instr-atstart=no --dump-instr=yes --simulate-cache=yes --collect-jumps=yes"
 
 # Run valgrind with helgrind checker, warning about custom gcc
 helgrind () { 
@@ -47,3 +50,15 @@ patch_cproj () {
     sed -i -e "s@<buildArguments/>@<buildArguments>-j$2</buildArguments>@g" "$1" 
 }
 
+# Set the given directory to find Mantid python
+set_mtd_path () {
+    export MANTIDPATH=$1
+    export PYTHONPATH=$MANTIDPATH
+}
+
+# Find a file on the archive
+find_run() {
+    curl -L http://data.isis.rl.ac.uk/where.py/unixdir?name=$1
+    ## result doesn't come back with new line
+    echo
+}
