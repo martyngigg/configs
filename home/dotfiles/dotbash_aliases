@@ -33,6 +33,10 @@ alias memgrind="valgrind --tool=memcheck --leak-check=full --show-reachable=yes 
 # Run callgrind with usuable options
 alias callgrind="valgrind --tool=callgrind --instr-atstart=no --dump-instr=yes --simulate-cache=yes --collect-jumps=yes"
 
+# Rebuild debian package
+# Requires following packages: build-essential fakeroot devscripts
+alias rebuilddeb="debuild -us -uc -i -I"
+
 # Run valgrind with helgrind checker, warning about custom gcc
 helgrind () { 
     echo "!!WARNING: Have you set the path to the custom gcc build!!"
