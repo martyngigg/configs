@@ -25,13 +25,31 @@ alias ctest="ctest --output-on-failure -j8"
 # Git
 alias gs="git status"
 alias gl="git log"
+alias glo="git log --oneline"
+alias glm="git log --merges --oneline"
 alias gp="git push"
+alias gpc="git push checkmantid"
 
 # Run memcheck with standard options
 alias memgrind="valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --freelist-vol=500000000 -v -v"
 
 # Run callgrind with usuable options
-alias callgrind="valgrind --tool=callgrind --instr-atstart=no --dump-instr=yes --simulate-cache=yes --collect-jumps=yes"
+alias callgrind="valgrind --tool=callgrind --instr-atstart=no --collect-atstart=no --dump-instr=yes --simulate-cache=yes --collect-jumps=yes"
+
+# Run valgrind like the buildservers
+# First argument should be the directory of the Mantid suppressions files
+# The remaining arguments are passed to valgrind
+memcheck() {
+    if [ $# -lt 2 ]; then
+        echo "Usage: memcheck suppressions_dir program [arguments...]"
+    else
+        OPTS="--leak-check=full --show-reachable=no --undef-value-errors=no --track-origins=no --child-silent-after-fork=no --trace-children=no --demangle=no"
+        SUPPR="--suppressions=$1/KernelTest.supp --suppressions=$1/GeometryTest.supp --suppressions=$1/APITest.supp"
+        shift 1 # Eat the directory argument
+
+        valgrind --tool=memcheck  ${OPTS} ${SUPPR} $@
+    fi
+}
 
 # Rebuild debian package
 # Requires following packages: build-essential fakeroot devscripts
@@ -57,8 +75,16 @@ patch_cproj () {
 # Set the given directory to find Mantid python
 set_mtd_path () {
     export MANTIDPATH=$1
-    export PYTHONPATH=$MANTIDPATH
+    export PYTHONPATH=$MANTIDPATH:$PYTHONPATH
 }
+
+# Set the current compiler to the no futex version 
+set_helgrind_compiler() {
+  export PATH=export PATH=/opt/compilers/gcc-4.6.3/bin:$PATH
+  export LD_LIBRARY_PATH=/opt/compilers/gcc-4.6.3/lib64$LD_LIBRARY_PATH
+  export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
+}
+
 
 # Find a file on the archive
 find_run() {
