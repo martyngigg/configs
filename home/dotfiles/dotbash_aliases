@@ -56,7 +56,7 @@ memcheck() {
 alias rebuilddeb="debuild -us -uc -i -I"
 
 # Run valgrind with helgrind checker, warning about custom gcc
-helgrind () { 
+helgrind () {
     echo "!!WARNING: Have you set the path to the custom gcc build!!"
     if [ $# -lt 2 ]; then
         echo "Usage: helgrind logfile program [arguments...]"
@@ -68,8 +68,8 @@ helgrind () {
 }
 
 # Fix up eclipse project to build with given number of cores
-patch_cproj () { 
-    sed -i -e "s@<buildArguments/>@<buildArguments>-j$2</buildArguments>@g" "$1" 
+patch_cproj () {
+    sed -i -e "s@<buildArguments/>@<buildArguments>-j$2</buildArguments>@g" "$1"
 }
 
 # Set the given directory to find Mantid python
@@ -78,7 +78,7 @@ set_mtd_path () {
     export PYTHONPATH=$MANTIDPATH:$PYTHONPATH
 }
 
-# Set the current compiler to the no futex version 
+# Set the current compiler to the no futex version
 set_helgrind_compiler() {
   export PATH=export PATH=/opt/compilers/gcc-4.6.3/bin:$PATH
   export LD_LIBRARY_PATH=/opt/compilers/gcc-4.6.3/lib64$LD_LIBRARY_PATH
@@ -91,4 +91,9 @@ find_run() {
     curl -L http://data.isis.rl.ac.uk/where.py/unixdir?name=$1
     ## result doesn't come back with new line
     echo
+}
+
+# Get http response code
+http_code() {
+    curl -sL -w "%{http_code}\n" $1 -o /dev/null
 }
