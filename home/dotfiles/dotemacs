@@ -38,6 +38,9 @@
 ;;ask about newline at end of text files
 (setq require-final-newline 'query)
 
+;; Remove trailing whitespace upon saving
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Load british dictionary by default with my preferences file
 (setq ispell-dictionary "british")
 
