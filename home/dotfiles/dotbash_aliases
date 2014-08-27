@@ -30,6 +30,33 @@ alias glm="git log --merges --oneline"
 alias gp="git push"
 alias gpc="git push checkmantid"
 
+function gitmergelog {
+    if [ $# -eq 0 ]; then
+      "echo Supply a merge commit SHA1"
+      return 1
+    fi
+    format="--pretty=oneline --abbrev-commit"
+    order=""
+    pos_arg=0
+    for i in "$@"; do
+        case $i in
+            "-b")
+	    format="--pretty=format:%h"
+	    continue
+            ;;
+            "-r")
+            order="--reverse"
+            continue
+        esac
+        case $pos_arg in
+            0) merge_commit=$i;;
+        esac
+        pos_arg=$((pos_arg+1))
+    done
+    git log $(git merge-base ${merge_commit}^1 ${merge_commit}^2)..${merge_commit}^2 $format $order
+}
+
+
 # Run memcheck with standard options
 alias memgrind="valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --freelist-vol=500000000 -v -v"
 
