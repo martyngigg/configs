@@ -70,8 +70,8 @@ memcheck() {
     if [ $# -lt 2 ]; then
         echo "Usage: memcheck suppressions_dir program [arguments...]"
     else
-        OPTS="--leak-check=full --show-reachable=no --undef-value-errors=no --track-origins=no --child-silent-after-fork=no --trace-children=no --demangle=no"
-        SUPPR="--suppressions=$1/KernelTest.supp --suppressions=$1/GeometryTest.supp --suppressions=$1/APITest.supp"
+        OPTS="--leak-check=full --show-reachable=no --undef-value-errors=yes --track-origins=no --child-silent-after-fork=no --trace-children=no --demangle=no"
+        SUPPR="--suppressions=$1/KernelTest.supp --suppressions=$1/GeometryTest.supp --suppressions=$1/APITest.supp --suppressions=$1/DataObjectsTest.supp"
         shift 1 # Eat the directory argument
 
         valgrind --tool=memcheck  ${OPTS} ${SUPPR} $@
