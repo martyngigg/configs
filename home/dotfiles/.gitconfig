@@ -1,0 +1,11 @@
+[user]
+	name = Martyn Gigg
+	email = martyn.gigg@stfc.ac.uk
+[core]
+	editor = emacs
+[merge]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	path = /home/dmn58364/Code/kdiff3-0.9.97/debugQt/kdiff3
+[web]
+	browser = google-chrome

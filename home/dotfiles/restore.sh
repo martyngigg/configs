@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES=".bash_aliases .bashrc_mgigg .emacs"
+FILES=".bash_aliases .bashrc_mgigg .emacs .gitconfig"
 
 for f in ${FILES}; do
    name="."$(echo $f | cut -c4-)
