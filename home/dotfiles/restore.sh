@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILES="dotbash_aliases dotbashrc_mgigg dotemacs"
+FILES=".bash_aliases .bashrc_mgigg .emacs"
 
 for f in ${FILES}; do
    name="."$(echo $f | cut -c4-)
