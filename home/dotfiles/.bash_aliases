@@ -24,6 +24,7 @@ alias ctest="ctest --output-on-failure -j8"
 
 # Git
 alias gs="git status"
+alias gf="git fetch"
 alias gl="git log"
 alias glo="git log --oneline"
 alias glm="git log --merges --oneline"
