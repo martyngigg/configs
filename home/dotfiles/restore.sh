@@ -3,9 +3,8 @@
 FILES=".bash_aliases .bashrc_mgigg .emacs .gitconfig"
 
 for f in ${FILES}; do
-   name="."$(echo $f | cut -c4-)
-   echo "Restoring $name"
-   cp $f ~/$name
+   echo "Restoring $f"
+   cp $f ~/$f
 done
 
 # patch .bashrc
