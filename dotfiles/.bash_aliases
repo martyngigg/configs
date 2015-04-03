@@ -1,6 +1,18 @@
-## Aliases to make life easier :)
-alias ls='ls --human-readable --ignore-backups --color=auto'
-alias ll='ls -l -h'
+# -*-shell-script-*-
+################################################################################
+# .bash_aliases: sourced from .bashrc to provide command aliases.
+#                color_dirs is set in .bashrc
+# Author: Martyn Gigg
+################################################################################
+
+if [ "$color_dir" = yes ]; then
+  alias ls="ls --human-readable --ignore-backups --color=auto"
+else
+  alias ls="ls --human-readable --ignore-backups"
+fi
+alias ll="ls -l"
+alias la="ls -A"
+
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
@@ -9,7 +21,7 @@ alias du="du -h"
 alias maxsize="du -m --max-depth=1 | sort -k1nr"
 alias df="df -h"
 
-## emacs text-mode
+# emacs text-mode
 alias nmacs="emacs -nw"
 
 # clues in the name
