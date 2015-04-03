@@ -5,7 +5,15 @@
 	editor = emacs
 [merge]
 	tool = kdiff3
+	conflictstyle = diff3
 [mergetool "kdiff3"]
-	path = /home/dmn58364/Code/kdiff3-0.9.97/debugQt/kdiff3
+	path = kdiff3
 [web]
 	browser = google-chrome
+[push]
+	default = simple
+[clangFormat]
+	binary = /usr/bin/clang-format-3.5
+	style = LLVM
+[alias]
+	test-pr = "!f() { git fetch origin +pull/$1/merge:pr/$1-merged && git checkout pr/$1-merged; }; f"
