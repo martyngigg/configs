@@ -26,6 +26,7 @@ alias du="du -h"
 alias df="df -h"
 alias maxsize="du -m --max-depth=1 | sort -k1nr"
 alias nmacs="emacs -nw"
+alias top="htop"
 
 # clue's in the name
 function mkdirandcd { mkdir -p "$1"; cd "$1"; }
