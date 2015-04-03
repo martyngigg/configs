@@ -5,6 +5,13 @@
 # Author: Martyn Gigg
 ################################################################################
 
+################################################################################
+# misc
+################################################################################
+
+# find the number of cores (includes hyperthreaded ones)
+ncores=$(grep -c ^processor /proc/cpuinfo)
+
 if [ "$color_dir" = yes ]; then
   alias ls="ls --human-readable --ignore-backups --color=auto"
 else
@@ -12,36 +19,39 @@ else
 fi
 alias ll="ls -l"
 alias la="ls -A"
-
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
-
 alias du="du -h"
-alias maxsize="du -m --max-depth=1 | sort -k1nr"
 alias df="df -h"
-
-# emacs text-mode
+alias maxsize="du -m --max-depth=1 | sort -k1nr"
 alias nmacs="emacs -nw"
 
-# clues in the name
+# clue's in the name
 function mkdirandcd { mkdir -p "$1"; cd "$1"; }
+# remove all files ending in "~", below the current directory
+function clr_emacs { find . -type f \( -name '*~' \) -print0 | xargs -0 -I\{\} rm \{\} ;}
 
-# Remove all files ending in "~", below the current directory
-function cleanemacsfiles { find . -type f \( -name '*~' \) -print0 | xargs -0 -I\{\} rm \{\} ;}
-alias swp="cleanemacsfiles"
+# get http response code
+http_code() {
+    curl -sL -w "%{http_code}\n" $1 -o /dev/null
+}
 
-# Make ctest to include --output-on-failure
-alias ctest="ctest --output-on-failure -j8"
+################################################################################
+# cmake
+################################################################################
+# always output on failure & run on maximum number of cores
+alias ctest="ctest --output-on-failure -j$ncores"
 
-# Git
+################################################################################
+# git (move to .gitconfig)
+################################################################################
+# short aliases
 alias gs="git status"
 alias gf="git fetch"
 alias gl="git log"
 alias glo="git log --oneline"
 alias glm="git log --merges --oneline"
-alias gp="git push"
-alias gpc="git push checkmantid"
 
 function gitmergelog {
     if [ $# -eq 0 ]; then
@@ -69,17 +79,20 @@ function gitmergelog {
     git log $(git merge-base ${merge_commit}^1 ${merge_commit}^2)..${merge_commit}^2 $format $order
 }
 
+################################################################################
+# valgrind
+################################################################################
 
-# Run memcheck with standard options
-alias memgrind="valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --freelist-vol=500000000 -v -v"
-
-# Run callgrind with usuable options
+# callgrind shortcut
 alias callgrind="valgrind --tool=callgrind --instr-atstart=no --collect-atstart=no --dump-instr=yes --simulate-cache=yes --collect-jumps=yes"
 
-# Run valgrind like the buildservers
+# memcheck with deep 
+alias memcheck-deep="valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --freelist-vol=500000000 -v -v"
+
+# Run memcheck like the buildservers
 # First argument should be the directory of the Mantid suppressions files
 # The remaining arguments are passed to valgrind
-memcheck() {
+memcheck-ci() {
     if [ $# -lt 2 ]; then
         echo "Usage: memcheck suppressions_dir program [arguments...]"
     else
@@ -91,13 +104,9 @@ memcheck() {
     fi
 }
 
-# Rebuild debian package
-# Requires following packages: build-essential fakeroot devscripts
-alias rebuilddeb="debuild -us -uc -i -I"
-
-# Run valgrind with helgrind checker, warning about custom gcc
+# Run valgrind with helgrind thread checker, warning about custom gcc
 helgrind () {
-    echo "!!WARNING: Have you set the path to the custom gcc build!!"
+    echo "WARNING: Have you set the path to the gcc build that disables the futex option?"
     if [ $# -lt 2 ]; then
         echo "Usage: helgrind logfile program [arguments...]"
     else
@@ -107,24 +116,15 @@ helgrind () {
     fi
 }
 
-# Fix up eclipse project to build with given number of cores
-patch_cproj () {
-    sed -i -e "s@<buildArguments/>@<buildArguments>-j$2</buildArguments>@g" "$1"
-}
 
+################################################################################
+# mantid
+################################################################################
 # Set the given directory to find Mantid python
 set_mtd_path () {
     export MANTIDPATH=$1
     export PYTHONPATH=$MANTIDPATH:$PYTHONPATH
 }
-
-# Set the current compiler to the no futex version
-set_helgrind_compiler() {
-  export PATH=export PATH=/opt/compilers/gcc-4.6.3/bin:$PATH
-  export LD_LIBRARY_PATH=/opt/compilers/gcc-4.6.3/lib64$LD_LIBRARY_PATH
-  export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
-}
-
 
 # Find a file on the archive
 find_run() {
@@ -133,7 +133,4 @@ find_run() {
     echo
 }
 
-# Get http response code
-http_code() {
-    curl -sL -w "%{http_code}\n" $1 -o /dev/null
-}
+
