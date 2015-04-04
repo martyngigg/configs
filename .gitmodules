@@ -1,0 +1,6 @@
+[submodule "setup/gnome-terminal-colors-solarized"]
+	path = setup/gnome-terminal-colors-solarized
+	url = https://github.com/Anthony25/gnome-terminal-colors-solarized
+[submodule "setup/dircolors-solarized"]
+	path = setup/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized
