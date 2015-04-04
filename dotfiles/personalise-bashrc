@@ -1,5 +1,0 @@
-# more personalization
-if [ -f ~/.bashrc_mgigg ]; then
-    . ~/.bashrc_mgigg
-fi
-
