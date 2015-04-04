@@ -86,8 +86,10 @@ function link_asset() {
   _link_cmd="ln -s"
   _target=$1
   _source=$2
-  debug mv $_target{,.bak}
-  mv $_target{,.bak}
+  if [ -e $_target ]; then
+    debug mv $_target{,.bak}
+    mv $_target{,.bak}
+  fi
   debug $_link_cmd $_source $_target
   $_link_cmd $_source $_target
 
@@ -107,22 +109,32 @@ function link_assets() {
     _source=$_source_dir/$asset
     _target=$_target_dir/$asset
     if [ ! -L $_target ]; then
-      link_asset $_target $_source 
+      link_asset $_target $_source
     fi
   done
 }
 
-# dotfiles
+# ------------------------------------------------------------------------------
+# link dotfiles
+# ------------------------------------------------------------------------------
 ignored="setup.sh|README.md|.gitignore|setup|.git"
 source_dir=$local_clone_dir/dotfiles
 assets=$(ls -A1 $source_dir | egrep -v ignored | xargs)
 link_assets $home $source_dir $assets
 
+# ------------------------------------------------------------------------------
 # solarize dircolors
+# ------------------------------------------------------------------------------
 dircolors_theme=dircolors.256dark
 if [ ! -L $home/.dircolors ]; then
   info "installing solarize dircolors"
   link_asset $home/.dircolors $local_clone_dir/setup/dircolors-solarized/$dircolors_theme
+else
+  info "solarized dircolors is already installed"
 fi
 
-# install gnome solarize theme as default
+# ------------------------------------------------------------------------------
+# solarize gnome theme
+# ------------------------------------------------------------------------------
+info "installing solarized theme for gnome terminal"
+$local_clone_dir/setup/gnome-terminal-colors-solarized/install.sh --scheme=dark --profile=Default
