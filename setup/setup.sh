@@ -83,15 +83,15 @@ fi
 # @param $1 target The link name
 # @param $2 source the source for the link
 function link_asset() {
-  _link_cmd="ln -s"
-  _target=$1
-  _source=$2
-  if [ -e $_target ]; then
-    debug mv $_target{,.bak}
-    mv $_target{,.bak}
+  local link_cmd="ln -s"
+  local target=$1
+  local source=$2
+  if [ -e $target ]; then
+    debug mv $target{,.bak}
+    mv $target{,.bak}
   fi
-  debug $_link_cmd $_source $_target
-  $_link_cmd $_source $_target
+  debug $link_cmd $source $target
+  $link_cmd $source $target
 
 }
 
@@ -100,16 +100,16 @@ function link_asset() {
 # @param $2 source directory
 # @param $3..$n list of files and directories to link
 function link_assets() {
-  _target_dir=$1
+  local target_dir=$1
   shift 1
-  _source_dir=$1
+  local source_dir=$1
   shift 1
-  info "linking new assets from $_source_dir -> $_target_dir"
+  info "linking new assets from $source_dir -> $target_dir"
   for asset in $*; do
-    _source=$_source_dir/$asset
-    _target=$_target_dir/$asset
-    if [ ! -L $_target ]; then
-      link_asset $_target $_source
+    source=$source_dir/$asset
+    target=$target_dir/$asset
+    if [ ! -L $target ]; then
+      link_asset $target $source
     fi
   done
 }
