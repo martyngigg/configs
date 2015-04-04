@@ -1,8 +1,49 @@
+;; ---------------------------------------------------------------------
+;; Allow automated package installation
+;; ---------------------------------------------------------------------
+(require 'package)
+(package-initialize)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(if (not (package-installed-p 'use-package))
+    (progn
+      (package-refresh-contents)
+      (package-install 'use-package)))
+(require 'use-package)
+
+;; ---------------------------------------------------------------------
+;; Packages
+;; ---------------------------------------------------------------------
+;; Allow solarized theme as safe
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(use-package color-theme-sanityinc-solarized
+  :ensure color-theme-sanityinc-solarized)
+;; Load dark solarized theme
+(load-theme 'sanityinc-solarized-dark)
+
+;; ---------------------------------------------------------------------
+;; Configuration
+;; ---------------------------------------------------------------------
 ;; Inhibit splash screen
 (setq inhibit-splash-screen t)
 
+;; Modules
+(add-to-list 'load-path "~/.emacs.d/")
+
 ;; Backup files go into a common directory
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 
 ;; Change save interval from 300 to 1000
 ;; keystrokes so it isn't so annoying
@@ -46,10 +87,7 @@
 (setq require-final-newline 'query)
 
 ;; Remove trailing whitespace upon saving
-;;(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Modules
-(add-to-list 'load-path "~/.emacs.d/")
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Load british dictionary by default with my preferences file
 (setq ispell-dictionary "british")
@@ -120,10 +158,3 @@
 	  '(lambda()
 	     (setq indent-tabs-mode nil)
 	     ))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(markdown-command "kramdown -i GFM"))
