@@ -56,10 +56,10 @@ info "configs folder is" $local_clone_dir
 
 if [ ! -d $local_clone_dir ]; then
   info "trying clone from read-write remote '$remote_rw' into '$local_clone_dir'"
-  git clone $remote_rw $local_clone_dir
+  git clone --recursive $remote_rw $local_clone_dir
   if [ $? -ne 0 ]; then
     info "cloning from read-write remote failed, are your ssh keys set up? trying again on read-only remote '$remote_ro'"
-    git clone $remote_ro $local_clone_dir
+    git clone --recursive $remote_ro $local_clone_dir
     if [ $? -ne 0 ]; then
       info "cloning from read-only remote failed. unable to continue"
       exit 1
