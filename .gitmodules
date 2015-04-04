@@ -4,3 +4,6 @@
 [submodule "setup/dircolors-solarized"]
 	path = setup/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
+[submodule "setup/bash-git-prompt"]
+	path = setup/bash-git-prompt
+	url = https://github.com/magicmonty/bash-git-prompt

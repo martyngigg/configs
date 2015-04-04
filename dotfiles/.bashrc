@@ -32,28 +32,18 @@ shopt -s checkwinsize
 shopt -s progcomp
 
 ################################################################################
-# git options
+# prompt - use bash-git-prompt
 ################################################################################
-export GIT_PS1_SHOWDIRTYSTATE=1
-
-################################################################################
-# prompt
-################################################################################
-# colour if we can!
-if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    # We have color support; assume it's compliant with Ecma-48
-    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-    # a case would tend to support setf rather than setaf.)
-    color_prompt=yes
+GIT_PROMPT_THEME=Solarized_Ubuntu
+GIT_PROMPT_ONLY_IN_REPO=0
+# if .bashrc is a symlink to the repository version then set the prompt
+# using bash-git-prompt
+if [ -L $HOME/.bashrc ]; then
+  _cfgs_repo=$(dirname $(dirname $(readlink -f $HOME/.bashrc)))
+  source $_cfgs_repo/setup/bash-git-prompt/gitprompt.sh
 else
-    color_prompt=
+  echo "Expected .bashrc to symlink to configs repository. Cannot set up bash-git-prompt."
 fi
-if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;31m\]\u@\h\[\033[01;34m\] \W$(__git_ps1 " (%s)") \$ \[\033[00m\]'
-else
-    PS1='\u@\h \W$(__git_ps1 " (%s)") \$ '
-fi
-
 
 ################################################################################
 # coloured ls & dirs + aliases
