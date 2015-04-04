@@ -78,31 +78,51 @@ fi
 # ------------------------------------------------------------------------------
 # install or update links
 # ------------------------------------------------------------------------------
-#
+
+# Link a source to a target, backing up the original if it is not a link
+# @param $1 target The link name
+# @param $2 source the source for the link
+function link_asset() {
+  _link_cmd="ln -s"
+  _target=$1
+  _source=$2
+  debug mv $_target{,.bak}
+  mv $_target{,.bak}
+  debug $_link_cmd $_source $_target
+  $_link_cmd $_source $_target
+
+}
+
 # Link all specified assets to the given directory
 # @param $1 target directory for link
 # @param $2 source directory
 # @param $3..$n list of files and directories to link
 function link_assets() {
-  _link_cmd="ln -s"
   _target_dir=$1
   shift 1
   _source_dir=$1
   shift 1
-  info "updating linked assets from $_source_dir -> $_target_dir"
+  info "linking new assets from $_source_dir -> $_target_dir"
   for asset in $*; do
     _source=$_source_dir/$asset
     _target=$_target_dir/$asset
     if [ ! -L $_target ]; then
-      debug mv $_target{,.bak}
-      mv $_target{,.bak}
-      debug $_link_cmd $_source $_target
-      $_link_cmd $_source $_target
+      link_asset $_target $_source 
     fi
   done
 }
 
+# dotfiles
 ignored="setup.sh|README.md|.gitignore|setup|.git"
 source_dir=$local_clone_dir/dotfiles
 assets=$(ls -A1 $source_dir | egrep -v ignored | xargs)
 link_assets $home $source_dir $assets
+
+# solarize dircolors
+dircolors_theme=dircolors.256dark
+if [ ! -L $home/.dircolors ]; then
+  info "installing solarize dircolors"
+  link_asset $home/.dircolors $local_clone_dir/setup/dircolors-solarized/$dircolors_theme
+fi
+
+# install gnome solarize theme as default
