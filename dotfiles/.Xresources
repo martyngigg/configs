@@ -1,2 +1,3 @@
-emacs.font: DejaVu Sans Mono-10
-Emacs*geometry:110x60+150
+! emacs
+emacs.font: Inconsolata-12
+emacs24.font: Inconsolata-12

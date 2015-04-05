@@ -10,6 +10,7 @@ emacs24-lucid
 emacs-goodies-el
 evince
 fakeroot
+fonts-inconsolata
 git
 git-gui
 htop
