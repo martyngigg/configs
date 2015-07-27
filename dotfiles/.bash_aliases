@@ -87,7 +87,7 @@ function gitmergelog {
 # callgrind shortcut
 alias callgrind="valgrind --tool=callgrind --instr-atstart=no --collect-atstart=no --dump-instr=yes --simulate-cache=yes --collect-jumps=yes"
 
-# memcheck with deep 
+# memcheck with deep
 alias memcheck-deep="valgrind --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=20 --track-fds=yes --track-origins=yes --freelist-vol=500000000 -v -v"
 
 # Run memcheck like the buildservers
@@ -97,7 +97,7 @@ memcheck-ci() {
     if [ $# -lt 2 ]; then
         echo "Usage: memcheck suppressions_dir program [arguments...]"
     else
-        OPTS="--leak-check=full --show-reachable=no --undef-value-errors=yes --track-origins=no --child-silent-after-fork=no --trace-children=no --demangle=no"
+        OPTS="--leak-check=full --show-reachable=no --undef-value-errors=yes --track-origins=no --child-silent-after-fork=no --trace-children=no --demangle=no --num-callers=20"
         SUPPR="--suppressions=$1/KernelTest.supp --suppressions=$1/GeometryTest.supp --suppressions=$1/APITest.supp --suppressions=$1/DataObjectsTest.supp"
         shift 1 # Eat the directory argument
 
@@ -133,5 +133,3 @@ find_run() {
     ## result doesn't come back with new line
     echo
 }
-
-
