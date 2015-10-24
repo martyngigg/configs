@@ -44,6 +44,9 @@ http_code() {
 # use Ninja by default as the generator
 alias cmake="cmake -G Ninja"
 alias ccmake="ccmake -G Ninja"
+alias cmake-debug="cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug"
+# release build
+alias cmake-release="cmake -G Ninja -DCMAKE_BUILD_TYPE=Release"
 # always output on failure & run on maximum number of cores
 alias ctest="ctest --output-on-failure -j$ncores"
 
