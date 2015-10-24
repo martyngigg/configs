@@ -41,7 +41,7 @@ http_code() {
 ################################################################################
 # cmake
 ################################################################################
-# always use ninja
+# use Ninja by default as the generator
 alias cmake="cmake -G Ninja"
 alias ccmake="ccmake -G Ninja"
 # always output on failure & run on maximum number of cores
