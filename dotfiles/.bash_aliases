@@ -41,6 +41,9 @@ http_code() {
 ################################################################################
 # cmake
 ################################################################################
+# always use ninja
+alias cmake="cmake -G Ninja"
+alias ccmake="ccmake -G Ninja"
 # always output on failure & run on maximum number of cores
 alias ctest="ctest --output-on-failure -j$ncores"
 
