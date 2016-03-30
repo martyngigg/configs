@@ -53,9 +53,10 @@
     fl = log -u
     ai = add --interactive
     co = checkout
-    br = branch 
+    br = branch
     bra = branch -ra
-    
+    newtopic = "!f() { git co --no-track -b "$1_$2" origin/master; }; f"
+
     # list commands
     le = log --oneline --decorate
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -74,7 +75,7 @@
 
     # list modified files in last commit
     dl = "!git ll -1"
-    
+
     # diff last commit
     dlc = diff --cached HEAD^
     dr  = "!f() { git diff -w "$1"^.."$1"; }; f"
@@ -129,7 +130,7 @@
     lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
 
     #subtree add
-    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f" 
+    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
     # initial empty commit
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
 
