@@ -120,6 +120,19 @@ helgrind () {
     fi
 }
 
+################################################################################
+# clang
+################################################################################
+clang-tidy-mantid() {
+    DB_PATH="$1"
+    SOURCES="$2"
+    #CHECKS="clang-analyzer-*,-clang-analyzer-alpha.core.CastToStruct,modernize-*,-modernize-pass-by-value,performance-*,google-readability-casting";
+    CHECKS="*"
+    for file in $SOURCES; do
+        echo Filename:$file;
+        clang-tidy-3.5 -checks=$CHECKS -p $DB_PATH -header-filter='./Framework*' $file;
+    done
+}
 
 ################################################################################
 # mantid
