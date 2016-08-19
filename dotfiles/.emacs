@@ -105,6 +105,9 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;; Use kramdown & GFM input for markdown
+(setq markdown-command "kramdown -i GFM")
+
 ;; Set BSD style indent with a default of 2 spaces per tab for global things
 (setq c-default-style "bsd"
       c-basic-offset 2)
