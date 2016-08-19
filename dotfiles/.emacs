@@ -31,7 +31,7 @@
 (use-package color-theme-sanityinc-solarized
   :ensure color-theme-sanityinc-solarized)
 ;; Load dark solarized theme
-(load-theme 'sanityinc-solarized-dark)
+(load-theme 'sanityinc-solarized-light)
 
 ;; ---------------------------------------------------------------------
 ;; Configuration
