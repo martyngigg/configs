@@ -1,2 +1,15 @@
-Simple flat files containing one package per line to be installed by
-the setup script.
+Lists of packages to be installed.
+
+ubuntu.txt
+----------
+
+Contains packages available in standard repositories
+
+ppa.txt
+-------
+
+Contains a list of ppa and packages to install. Format is lines of
+
+```
+ppa:ADDRESS packagename
+```

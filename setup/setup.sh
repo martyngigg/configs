@@ -13,7 +13,7 @@
 # ------------------------------------------------------------------------------
 DEBUG=1
 
-function exit_if_command_available {
+function exit_if_command_not_available {
   if [ -z $(which $1) ]; then
     echo "Installation requires the $1 command to be available"
     exit 1
@@ -28,8 +28,8 @@ function debug() {
   [ $DEBUG -eq 1 ] && echo "  " $*
 }
 
-exit_if_command_available git
-exit_if_command_available curl
+exit_if_command_not_available git
+exit_if_command_not_available curl
 
 # Fix home for root
 if [ $(whoami) = "root" ]; then
