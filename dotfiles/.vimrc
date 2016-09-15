@@ -130,7 +130,6 @@ if vundle_installed == 0
 endif
 " Setting up Vundle - the vim plugin bundler end
 
-set laststatus=2
 filetype plugin indent on                "Renable file-type detection
 
 "================="
@@ -161,16 +160,17 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 "Airline options
 let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline_detect_spell = 0
 let g:airline_detect_modified = 1
 let g:airline_theme="light"
 " Required for CtrlSpace integration
 let g:airline_exclude_preview = 1
 " End CtrlSpace integration
 let g:airline#extensions#whitespace#enabled=0
-let g:airline#extensions#default#layout = [
-    \ [ 'a', 'b', 'c' ],
-    \ [ 'x', 'z', 'warning' ]
-    \ ]
 
 "CtrlSpace
 set hidden
