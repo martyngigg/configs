@@ -21,3 +21,4 @@ python
 python-numpy
 python-requests
 silversearcher-ag
+xsel

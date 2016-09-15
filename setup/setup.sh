@@ -115,6 +115,20 @@ function link_assets() {
 }
 
 # ------------------------------------------------------------------------------
+# Install powerline fonts
+# ------------------------------------------------------------------------------
+if [ ! -f $home/.fonts/PowerlineSymbols.otf ]; then
+  test -d $home/.fonts || mkdir $home/.fonts
+  curl --silent --show-error --location -o $home/.fonts/PowerlineSymbols.otf https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+  fc-cache -vf $home/.fonts/
+  test -d $home/.fonts.conf.d || mkdir $home/.fonts.conf.d
+  curl --silent --show-error --location -o $home/.fonts.conf.d/10-powerline-symbols.conf https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+fi
+
+
+
+
+# ------------------------------------------------------------------------------
 # link dotfiles
 # ------------------------------------------------------------------------------
 ignored="setup.sh|README.md|.gitignore|setup|.git"
