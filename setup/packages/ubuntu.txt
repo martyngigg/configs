@@ -19,6 +19,7 @@ openssh-client
 openssh-server
 python
 python-numpy
+python-pip
 python-requests
 silversearcher-ag
 xsel
