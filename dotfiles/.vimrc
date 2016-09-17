@@ -166,7 +166,8 @@ endif
 let g:airline_symbols.space = "\ua0"
 let g:airline_detect_spell = 0
 let g:airline_detect_modified = 1
-let g:airline_theme="light"
+let g:airline_theme="solarized"
+let g:airline_solarized_normal_green = 1
 " Required for CtrlSpace integration
 let g:airline_exclude_preview = 1
 " End CtrlSpace integration
