@@ -136,7 +136,7 @@ filetype plugin indent on                "Renable file-type detection
 "Plugins Settings
 "================="
 "Solarized theme
-set background=light
+set background=dark
 colorscheme solarized
 highlight SignColumn ctermbg=8
 
