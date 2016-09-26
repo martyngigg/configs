@@ -10,3 +10,6 @@
 [submodule "setup/qtcreator-solarized"]
 	path = setup/qtcreator-solarized
 	url = https://github.com/curonian/qtcreator-solarized
+[submodule "setup/dockerfile-mode"]
+	path = setup/dockerfile-mode
+	url = https://github.com/spotify/dockerfile-mode.git
