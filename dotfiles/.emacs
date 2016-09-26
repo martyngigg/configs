@@ -20,7 +20,7 @@
 (load-theme 'sanityinc-solarized-dark t)
 
 ;; Docker mode
-(add-to-list 'load-path "~/.repos/dockerfile-mode")
+(add-to-list 'load-path "~/.repos/configs/setup/dockerfile-mode")
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
