@@ -7,3 +7,6 @@
 [submodule "setup/bash-git-prompt"]
 	path = setup/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt
+[submodule "setup/qtcreator-solarized"]
+	path = setup/qtcreator-solarized
+	url = https://github.com/curonian/qtcreator-solarized
