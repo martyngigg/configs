@@ -6,7 +6,7 @@ curl
 dconf-cli
 devscripts
 doxygen
-emacs24-lucid
+emacs24
 emacs-goodies-el
 evince
 fakeroot
