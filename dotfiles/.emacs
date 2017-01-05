@@ -30,9 +30,6 @@
 ;; Inhibit splash screen
 (setq inhibit-splash-screen t)
 
-;; Modules
-(add-to-list 'load-path "~/.emacs.d/")
-
 ;; Backup files go into a common directory
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 
