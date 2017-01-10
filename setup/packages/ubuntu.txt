@@ -21,5 +21,6 @@ python
 python-numpy
 python-pip
 python-requests
+screen
 silversearcher-ag
 xsel
