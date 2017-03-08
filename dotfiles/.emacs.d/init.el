@@ -30,6 +30,7 @@
 ;; Inhibit splash screen
 (setq inhibit-splash-screen t)
 
+(add-to-list 'load-path "~/.emacs.d/elpa")
 ;; Backup files go into a common directory
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 
