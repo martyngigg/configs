@@ -9,6 +9,7 @@
 ;; Some basic preferences
 ;;----------------------------------------------------------------------------
 (setq-default
+ auto-save-default nil
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
  buffers-menu-max-size 30

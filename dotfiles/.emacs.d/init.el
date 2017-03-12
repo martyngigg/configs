@@ -37,6 +37,8 @@
 (require 'init-gui-frames)
 (require 'init-themes)
 (require 'init-editing)
+(require 'init-cpp-mode)
+(require 'init-markdown-mode)
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
