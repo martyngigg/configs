@@ -131,7 +131,7 @@ fi
 # ------------------------------------------------------------------------------
 # link dotfiles
 # ------------------------------------------------------------------------------
-ignored="setup.sh|README.md|.gitignore|setup|.git"
+ignored="setup.sh|setup-emacs-cpp.sh|README.md|.gitignore|setup|.git"
 source_dir=$local_clone_dir/dotfiles
 assets=$(ls -A1 $source_dir | egrep -v ignored | xargs)
 link_assets $home $source_dir $assets
@@ -160,3 +160,8 @@ gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_rows --type in
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_columns --type int 102
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/silent_bell --type boolean true
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_show_menubar --type boolean false
+
+# ------------------------------------------------------------------------------
+# setup emacs C++ IDE
+# ------------------------------------------------------------------------------
+`dirname ${0}`/setup-emacs-cpp.sh

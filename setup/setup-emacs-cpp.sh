@@ -81,7 +81,7 @@ Requires=rdm.socket
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/rdm --log-file=%h/.rtags/rdm.log --data-dir=%h/.rtags/rtags-cache --verbose --inactivity-timeout 300
+ExecStart=${_install_prefix}/bin/rdm --log-file=%h/.rtags/rdm.log --data-dir=%h/.rtags/rtags-cache --verbose --inactivity-timoeout 300
 EOF
     # enable
     systemctl --user enable rdm.socket
