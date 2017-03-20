@@ -13,6 +13,3 @@
 [submodule "setup/dockerfile-mode"]
 	path = thirdparty/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode.git
-[submodule "thirdparty/emacs-color-theme-solarized"]
-	path = thirdparty/emacs-color-theme-solarized
-	url = https://github.com/sellout/emacs-color-theme-solarized.git
