@@ -1,15 +1,18 @@
 [submodule "setup/gnome-terminal-colors-solarized"]
-	path = setup/gnome-terminal-colors-solarized
+	path = thirdparty/gnome-terminal-colors-solarized
 	url = https://github.com/Anthony25/gnome-terminal-colors-solarized
 [submodule "setup/dircolors-solarized"]
-	path = setup/dircolors-solarized
+	path = thirdparty/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
 [submodule "setup/bash-git-prompt"]
-	path = setup/bash-git-prompt
+	path = thirdparty/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt
 [submodule "setup/qtcreator-solarized"]
-	path = setup/qtcreator-solarized
+	path = thirdparty/qtcreator-solarized
 	url = https://github.com/curonian/qtcreator-solarized
 [submodule "setup/dockerfile-mode"]
-	path = setup/dockerfile-mode
+	path = thirdparty/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode.git
+[submodule "thirdparty/emacs-color-theme-solarized"]
+	path = thirdparty/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git

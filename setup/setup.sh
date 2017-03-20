@@ -142,7 +142,7 @@ link_assets $home $source_dir $assets
 dircolors_theme=dircolors.256dark
 if [ ! -L $home/.dircolors ]; then
   info "installing solarize dircolors"
-  link_asset $home/.dircolors $local_clone_dir/setup/dircolors-solarized/$dircolors_theme
+  link_asset $home/.dircolors $local_clone_dir/thirdparty/dircolors-solarized/$dircolors_theme
 else
   info "solarized dircolors is already installed"
 fi
@@ -151,7 +151,7 @@ fi
 # customize gnome-terminal theme
 # ------------------------------------------------------------------------------
 info "installing solarized theme for gnome terminal"
-$local_clone_dir/setup/gnome-terminal-colors-solarized/install.sh --scheme=dark --profile=Default
+$local_clone_dir/thirdparty/gnome-terminal-colors-solarized/install.sh --scheme=dark --profile=Default
 info "setting terminal defaults"
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/font --type string "Inconsolata Medium 12"
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/use_system_font --type boolean false
@@ -164,4 +164,4 @@ gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_show_menubar --type
 # ------------------------------------------------------------------------------
 # setup emacs C++ IDE
 # ------------------------------------------------------------------------------
-`dirname ${0}`/setup-emacs-cpp.sh
+#`dirname ${0}`/setup-emacs-cpp.sh

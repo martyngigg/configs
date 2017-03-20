@@ -40,7 +40,7 @@ GIT_PROMPT_ONLY_IN_REPO=0
 # using bash-git-prompt
 if [ -L $HOME/.bashrc ]; then
   _cfgs_repo=$(dirname $(dirname $(readlink -f $HOME/.bashrc)))
-  source $_cfgs_repo/setup/bash-git-prompt/gitprompt.sh
+  source $_cfgs_repo/thirdparty/bash-git-prompt/gitprompt.sh
 else
   echo "Expected .bashrc to symlink to configs repository. Cannot set up bash-git-prompt."
 fi
