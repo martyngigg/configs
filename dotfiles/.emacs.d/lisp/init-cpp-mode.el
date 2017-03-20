@@ -4,6 +4,13 @@
 (add-auto-mode 'c++-mode "\\.C$" "\\.cc$"
                "\\.c$" "\\.h$" "\\.cpp$" "\\.cxx$" "\\.tcc$")
 
+;;----------------------------------------------------------------------------
+;; Clang-format (requires clang-format-3.6 on the path)
+;;----------------------------------------------------------------------------
+(require-package 'clang-format)
+(global-set-key (kbd "C-c \\") 'clang-format-buffer)
+(setq clang-format-executable "clang-format-3.6")
+
 ;; ;;----------------------------------------------------------------------------
 ;; ;; RTags - source code navigation
 ;; ;;----------------------------------------------------------------------------
