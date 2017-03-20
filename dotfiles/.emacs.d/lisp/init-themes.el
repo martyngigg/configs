@@ -1,3 +1,6 @@
+;;------------------------------------------------------------------------------
+;; Solarized theme
+;;------------------------------------------------------------------------------
 (require-package 'color-theme-sanityinc-solarized)
 
 ;; If you don't customize it, this is the theme you get.
