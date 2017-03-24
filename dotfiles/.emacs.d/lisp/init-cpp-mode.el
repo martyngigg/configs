@@ -8,8 +8,37 @@
 ;; Clang-format (requires clang-format-3.6 on the path)
 ;;----------------------------------------------------------------------------
 (require-package 'clang-format)
-(global-set-key (kbd "C-c \\") 'clang-format-buffer)
+(global-set-key (kbd "C-x \\") 'clang-format-buffer)
 (setq clang-format-executable "clang-format-3.6")
+
+;;----------------------------------------------------------------------------
+;; Handy shortcut keys
+;;----------------------------------------------------------------------------
+(setq compilation-read-command nil) ;; Don't prompt for command
+(global-set-key "\C-x\C-m" 'compile)
+
+
+;;----------------------------------------------------------------------------
+;; C++ IDE Features - TODO: Tidy this up
+;;---------------------------------------------------------------------------
+(require-package 'auto-complete)
+(package-install 'auto-complete-c-headers)
+
+;; default setup for auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+
+(require-package 'yasnippet)
+(yas-global-mode 1)
+
+(defun my:ac-c-header-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (add-to-list 'achead:include-directories '"/usr/include/c++/5")
+)
+; now let's call this function from c/c++ hooks
+(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-hook 'my:ac-c-header-init)
 
 ;; ;;----------------------------------------------------------------------------
 ;; ;; RTags - source code navigation
