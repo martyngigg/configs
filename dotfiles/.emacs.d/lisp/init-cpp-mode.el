@@ -17,69 +17,61 @@
 (setq compilation-read-command nil) ;; Don't prompt for command
 (global-set-key "\C-x\C-m" 'compile)
 
-
 ;;----------------------------------------------------------------------------
-;; C++ IDE Features - TODO: Tidy this up
+;; Yasnippet
 ;;---------------------------------------------------------------------------
-(require-package 'auto-complete)
-(package-install 'auto-complete-c-headers)
-
-;; default setup for auto-complete
-(require 'auto-complete-config)
-(ac-config-default)
-
 (require-package 'yasnippet)
 (yas-global-mode 1)
 
-(defun my:ac-c-header-init ()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"/usr/include/c++/5")
+;;----------------------------------------------------------------------------
+;; Company - in-buffer completion
+;;----------------------------------------------------------------------------
+(require-package 'company)
+(require-package 'company-irony)
+(require-package 'company-c-headers)
+(global-company-mode 1)
+
+;; configure backends
+(setq company-backends (delete 'company-semantic company-backends))
+(add-to-list 'company-backends 'company-c-headers)
+(add-to-list 'company-backends 'company-irony)
+
+;; system gcc paths
+(defun my:company-c-header-init ()
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/5")
 )
 ; now let's call this function from c/c++ hooks
-(add-hook 'c++-mode-hook 'my:ac-c-header-init)
-(add-hook 'c-mode-hook 'my:ac-c-header-init)
+(add-hook 'c++-mode-hook 'my:company-c-header-init)
+(add-hook 'c-mode-hook 'my:company-c-header-init)
 
-;; ;;----------------------------------------------------------------------------
-;; ;; RTags - source code navigation
-;; ;;----------------------------------------------------------------------------
-;; ;; RTags requires RTags to be built locally and installed in /usr/local/...
-;; ;; See https://skebanga.github.io/rtags-with-cmake-in-spacemacs/
-;; (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/rtags")
-;; (require 'rtags)
+;;(add-hook 'after-init-hook 'global-company-mode)
+;; (optional) adds CC special commands to `company-begin-commands' in order to
+;; trigger completion at interesting places, such as after scope operator
+;;     std::|
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+(setq company-idle-delay 0.2)
+(setq company-auto-complete t)
+(setq company-minimum-prefix-length 1)
+(setq company-begin-commands '(self-insert-command))
+(dolist (hook (list
+               'emacs-lisp-mode-hook
+               'lisp-mode-hook
+               'lisp-interaction-mode-hook
+               'c-mode-hook
+               'c++-mode-hook
+               'asm-mode-hook
+               'sh-mode-hook
+               'org-mode
+               'python-mode
+               ))
+  (add-hook hook 'company-mode))
+;; To retrieve completion candidates for your proreate a file named .dir-locals.el at your project root:
+;; ((nil . ((company-clang-arguments . ("-I/home/<user>/project_root/include1/"
+;;                                     "-I/home/<user>/project_root/include2/")))))
 
-;; ;;----------------------------------------------------------------------------
-;; ;; Irony - source code completion
-;; ;;----------------------------------------------------------------------------
-;; (require-package 'irony)
-;; (add-hook 'c++-mode-hook 'irony-mode)
-;; (add-hook 'c-mode-hook 'irony-mode)
-;; (add-hook 'objc-mode-hook 'irony-mode)
-
-;; (defun my-irony-mode-hook ()
-;;   (define-key irony-mode-map [remap completion-at-point]
-;;     'irony-completion-at-point-async)
-;;   (define-key irony-mode-map [remap complete-symbol]
-;;     'irony-completion-at-point-async))
-
-;; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
-;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-;; ;;----------------------------------------------------------------------------
-;; ;; Company - in-buffer completion
-;; ;;----------------------------------------------------------------------------
-;; (require-package 'company-irony)
-;; (require-package 'company-irony-c-headers)
-
-;; (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-;; ;;(setq company-backends (delete 'company-semantic company-backends))
-;; (eval-after-load 'company
-;;   '(add-to-list
-;;     'company-backends '(company-irony-c-headers company-irony)))
-
-;; (setq company-idle-delay 0)
-;; ;;(define-key c-mode-map [(tab)] 'company-complete)
-;; ;;(define-key c++-mode-map [(tab)] 'company-complete)
+;; shortcuts
+(define-key company-mode-map (kbd "M-/") 'company-complete)
+(define-key company-active-map (kbd "M-/") 'company-select-next)
 
 ;; ;;----------------------------------------------------------------------------
 ;; ;; Flycheck - syntax checking
