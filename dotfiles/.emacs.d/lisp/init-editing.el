@@ -1,10 +1,5 @@
 (require-package 'unfill)
 
-(when (fboundp 'electric-pair-mode)
-  (electric-pair-mode))
-(when (eval-when-compile (version< "24.4" emacs-version))
-  (electric-indent-mode 1))
-
 ;;----------------------------------------------------------------------------
 ;; Some basic preferences
 ;;----------------------------------------------------------------------------
@@ -37,7 +32,7 @@
 ;; Remove trailing whitespace upon saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
- ;;; A simple visible bell which works in all terminal types
+;; A simple visible bell which works in all terminal types
 
 (defun sanityinc/flash-mode-line ()
   (invert-face 'mode-line)
@@ -48,16 +43,19 @@
 
 
 
-;;; Newline behaviour
+;; Newline behaviour
 
-(global-set-key (kbd "RET") 'newline-and-indent)
-(defun sanityinc/newline-at-end-of-line ()
-  "Move to end of line, enter a newline, and reindent."
-  (interactive)
-  (move-end-of-line 1)
-  (newline-and-indent))
+;; None of this fancy indenting nonsense
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
 
-(global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
+;; (global-set-key (kbd "RET") 'newline-and-indent)
+;; (defun sanityinc/newline-at-end-of-line ()
+;;   "Move to end of line, enter a newline, and reindent."
+;;   (interactive)
+;;   (move-end-of-line 1)
+;;   (newline-and-indent))
+
+;; (global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
 
 
 (when (eval-when-compile (string< "24.3.1" emacs-version))
@@ -253,6 +251,5 @@ With arg N, insert N newlines."
           (lambda ()
             (guide-key-mode 1)
             (diminish 'guide-key-mode)))
-
 
 (provide 'init-editing)
