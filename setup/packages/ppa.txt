@@ -1,1 +1,1 @@
-ppa:neovim-ppa/unstable neovim
+ppa:indicator-multiload/stable-daily indicator-multiload

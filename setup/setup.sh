@@ -150,6 +150,19 @@ curl --output $chrome_local_path $chrome_dl_url
 sudo gdebi $chrome_local_path
 
 # ------------------------------------------------------------------------------
+# install ppa packages
+# ------------------------------------------------------------------------------
+while IFS= read line
+do
+  ppa=`echo $line | awk '{print $1}'`
+  package=`echo $line | awk '{print $2}'`
+  echo "Adding PPA '$ppa'"
+  sudo apt-add-repository --assume-yes $ppa
+  echo "Installing package '$package'"
+  sudo apt install --assume-yes $package
+done <$input
+
+# ------------------------------------------------------------------------------
 # Install powerline fonts
 # ------------------------------------------------------------------------------
 fonts_home_path=$home/.fonts
