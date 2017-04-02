@@ -11,6 +11,7 @@ emacs-goodies-el
 evince
 fakeroot
 fonts-inconsolata
+gdebi-core
 git
 git-gui
 htop

@@ -3,16 +3,15 @@
 # setup.sh: Assuming a clean system: setup standard packages and install
 #           config scripts stored here
 #
-#   curl -Ls https://github.com/martyngigg/configs/raw/master/setup/setup.sh | bash
+#   wget https://github.com/martyngigg/configs/raw/master/setup/setup.sh -q -O - | bash
 #
 # Author: Martyn Gigg
 ################################################################################
-
-# ------------------------------------------------------------------------------
-# Check script requirements
-# ------------------------------------------------------------------------------
 DEBUG=1
 
+# ------------------------------------------------------------------------------
+# Useful functions
+# ------------------------------------------------------------------------------
 function exit_if_command_not_available {
   if [ -z $(which $1) ]; then
     echo "Installation requires the $1 command to be available"
@@ -28,6 +27,48 @@ function debug() {
   [ $DEBUG -eq 1 ] && echo "  " $*
 }
 
+# Link a source to a target, backing up the original if it is not a link
+# @param $1 target The link name
+# @param $2 source the source for the link
+function link_asset() {
+  local link_cmd="ln -s"
+  local target=$1
+  local source=$2
+  if [ -e $target ]; then
+    debug mv $target{,.bak}
+    mv $target{,.bak}
+  fi
+  debug $link_cmd $source $target
+  $link_cmd $source $target
+}
+
+# Link all specified assets to the given directory
+# @param $1 target directory for link
+# @param $2 source directory
+# @param $3..$n list of files and directories to link
+function link_assets() {
+  local target_dir=$1
+  shift 1
+  local source_dir=$1
+  shift 1
+  info "linking new assets from $source_dir -> $target_dir"
+  for asset in $*; do
+    source=$source_dir/$asset
+    target=$target_dir/$asset
+    if [ ! -L $target ]; then
+      link_asset $target $source
+    fi
+  done
+}
+
+# ------------------------------------------------------------------------------
+# Install git and curl
+# ------------------------------------------------------------------------------
+sudo xargs apt install -y git curl
+
+# ------------------------------------------------------------------------------
+# Check script requirements
+# ------------------------------------------------------------------------------
 exit_if_command_not_available git
 exit_if_command_not_available curl
 
@@ -76,57 +117,31 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# install or update links
+# install base packages
 # ------------------------------------------------------------------------------
+# standard set
+cat $local_clone_dir/setup/packages/ubuntu.txt | sudo xargs apt install --assume-yes
 
-# Link a source to a target, backing up the original if it is not a link
-# @param $1 target The link name
-# @param $2 source the source for the link
-function link_asset() {
-  local link_cmd="ln -s"
-  local target=$1
-  local source=$2
-  if [ -e $target ]; then
-    debug mv $target{,.bak}
-    mv $target{,.bak}
-  fi
-  debug $link_cmd $source $target
-  $link_cmd $source $target
-
-}
-
-# Link all specified assets to the given directory
-# @param $1 target directory for link
-# @param $2 source directory
-# @param $3..$n list of files and directories to link
-function link_assets() {
-  local target_dir=$1
-  shift 1
-  local source_dir=$1
-  shift 1
-  info "linking new assets from $source_dir -> $target_dir"
-  for asset in $*; do
-    source=$source_dir/$asset
-    target=$target_dir/$asset
-    if [ ! -L $target ]; then
-      link_asset $target $source
-    fi
-  done
-}
+# chrome
+chrome_dl_url=https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+chrome_local_path=/tmp/google-chrome-stable_current_amd64.deb
+curl --output $chrome_local_path $chrome_dl_url
+sudo gdebi $chrome_local_path
 
 # ------------------------------------------------------------------------------
 # Install powerline fonts
 # ------------------------------------------------------------------------------
-if [ ! -f $home/.fonts/PowerlineSymbols.otf ]; then
-  test -d $home/.fonts || mkdir $home/.fonts
-  curl --silent --show-error --location -o $home/.fonts/PowerlineSymbols.otf https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-  fc-cache -vf $home/.fonts/
-  test -d $home/.fonts.conf.d || mkdir $home/.fonts.conf.d
-  curl --silent --show-error --location -o $home/.fonts.conf.d/10-powerline-symbols.conf https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+fonts_home_path=$home/.fonts
+fonts_conf_home_path=$home/.fonts.conf.d
+powerline_symbols_url=https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+powerline_symbols_conf_url=https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+if [ ! -f $fonts_home_path/PowerlineSymbols.otf ]; then
+  test -d $fonts_home_path || mkdir $fonts_home_path
+  curl --silent --show-error --location -o $fonts_home_path/PowerlineSymbols.otf $powerline_symbols_url
+  fc-cache -vf $fonts_home_path
+  test -d $fonts_conf_home_path || mkdir $fonts_conf_home_path
+  curl --silent --show-error --location -o $fonts_conf_home_path/10-powerline-symbols.conf $powerline_symbols_conf_url
 fi
-
-
-
 
 # ------------------------------------------------------------------------------
 # link dotfiles
@@ -160,8 +175,3 @@ gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_rows --type in
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_columns --type int 102
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/silent_bell --type boolean true
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_show_menubar --type boolean false
-
-# ------------------------------------------------------------------------------
-# setup emacs C++ IDE
-# ------------------------------------------------------------------------------
-#`dirname ${0}`/setup-emacs-cpp.sh
