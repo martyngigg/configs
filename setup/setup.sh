@@ -61,6 +61,27 @@ function link_assets() {
   done
 }
 
+# Remove a directory if it exists
+# @param $1 target
+function remove_existing_directory() {
+  local target=$1
+  shift 1
+  if [ -d $target ]; then
+    rm -rf $target
+  fi
+}
+
+# Remove a directory if it exists
+# @param $1..$n directories to remove
+function remove_existing_directories() {
+  local target=$1
+  shift 1
+  info "removing directories $*"
+  for direc in $*; do
+     remove_existing_directory $direc
+  done
+}
+
 # ------------------------------------------------------------------------------
 # Install git and curl
 # ------------------------------------------------------------------------------
@@ -175,3 +196,9 @@ gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_rows --type in
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_columns --type int 102
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/silent_bell --type boolean true
 gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_show_menubar --type boolean false
+
+# ------------------------------------------------------------------------------
+# Remove unwanted directories in $home
+# ------------------------------------------------------------------------------
+unwanted_dirs="Music Public Templates Videos"
+remove_existing_directories $unwanted_dirs
