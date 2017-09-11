@@ -123,8 +123,10 @@
     ours = "!f() { git co --ours $@ && git add $@; }; f"
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
-    # list remotes
+    # remotes
     rem="!git config -l | grep remote.*url | tail -n +2"
+    fetcur="!f() { CURBRANCH=$(git rev-parse --abbrev-ref HEAD) && git fetch origin +refs/heads/$CURBRANCH:refs/remotes/origin/$CURBRANCH; };f"
+    pulcur="!f() { CURBRANCH=$(git rev-parse --abbrev-ref HEAD) && git pull origin +refs/heads/$CURBRANCH:refs/remotes/origin/$CURBRANCH; };f"
 
     # apply patch from other local repo
     lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
