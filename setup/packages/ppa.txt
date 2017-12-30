@@ -1,1 +1,0 @@
-ppa:indicator-multiload/stable-daily indicator-multiload

@@ -13,3 +13,6 @@
 [submodule "setup/dockerfile-mode"]
 	path = thirdparty/dockerfile-mode
 	url = https://github.com/spotify/dockerfile-mode.git
+[submodule "thirdparty/oh-my-zsh"]
+	path = thirdparty/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
