@@ -143,12 +143,6 @@ fi
 # standard set
 cat $local_clone_dir/setup/packages/ubuntu.txt | sudo xargs apt install --assume-yes
 
-# chrome
-chrome_dl_url=https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-chrome_local_path=/tmp/google-chrome-stable_current_amd64.deb
-curl --output $chrome_local_path $chrome_dl_url
-sudo gdebi $chrome_local_path
-
 # ------------------------------------------------------------------------------
 # install ppa packages
 # ------------------------------------------------------------------------------

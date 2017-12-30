@@ -10,6 +10,7 @@ emacs24
 emacs-goodies-el
 evince
 fakeroot
+firefox
 fonts-inconsolata
 gdebi-core
 git
