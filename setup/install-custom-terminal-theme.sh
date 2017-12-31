@@ -6,13 +6,24 @@ setup_dir=$(cd $(dirname "$0") && pwd)
 # source utilities
 . $setup_dir/common.sh
 
-info "installing solarized theme for gnome terminal"
-$setup_dir/../thirdparty/gnome-terminal-colors-solarized/install.sh --scheme=dark --profile=Default
+# create new default gnome profile
+dconf_dir=/org/gnome/terminal/legacy
+terminal_profiles_dir=$dconf_dir/profiles:
+profile_id="$(uuidgen)"
+info "creating new terminal profile with id '$profile_id'"
+dconf write $terminal_profiles_dir/default "'$profile_id'"
+dconf write $terminal_profiles_dir/list "['$profile_id']"
+profile_dir="$terminal_profiles_dir/:$profile_id"
+
 info "setting terminal defaults"
-gconftool-2 -s /apps/gnome-terminal/profiles/Default/font --type string "Inconsolata Medium 12"
-gconftool-2 -s /apps/gnome-terminal/profiles/Default/use_system_font --type boolean false
-gconftool-2 -s /apps/gnome-terminal/profiles/Default/use_custom_default_size --type boolean true
-gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_rows --type int 49
-gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_size_columns --type int 102
-gconftool-2 -s /apps/gnome-terminal/profiles/Default/silent_bell --type boolean true
-gconftool-2 -s /apps/gnome-terminal/profiles/Default/default_show_menubar --type boolean false
+dconf write "$dconf_dir/default-show-menubar" false
+dconf write "$profile_dir/visible-name" "'Default'"
+dconf write "$profile_dir/font" "'Inconsolata Medium 12'"
+dconf write "$profile_dir/use-system-font" false
+dconf write "$profile_dir/default-size-rows" 49
+dconf write "$profile_dir/default-size-columns" 102
+dconf write "$profile_dir/audible-bell"  false
+
+
+info "installing solarized theme for gnome terminal"
+$setup_dir/../thirdparty/gnome-terminal-colors-solarized/install.sh --scheme=light  --profile=Default --skip-dircolors
