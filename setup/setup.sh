@@ -19,3 +19,4 @@ bash $setup_dir/install-dotfiles.sh
 bash $setup_dir/install-powerline-symbols.sh
 bash $setup_dir/install-solarized-dircolors.sh
 bash $setup_dir/install-custom-terminal-theme.sh
+bash $setup_dir/enable-user-services.sh

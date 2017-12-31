@@ -26,7 +26,6 @@ plugins=(
   docker-compose
   dircolors-solarized
   gitfast
-  tmux
   web-search
 )
 

@@ -23,6 +23,7 @@ apt-get -y install \
   ipython \
   openssh-client \
   openssh-server \
+  powerline \
   python \
   python-numpy \
   python-pip \
