@@ -55,7 +55,7 @@
     co = checkout
     br = branch
     bra = branch -ra
-    newtopic = "!f() { git fetch && git co --no-track -b "$1_$2" origin/master; }; f"
+    newtopic = "!f() { git fetch && git co --no-track -b "$1-$2" origin/master; }; f"
 
     # list commands
     le = log --oneline --decorate
@@ -131,14 +131,12 @@
     # apply patch from other local repo
     lap = "!f() { git --git-dir=$1 format-patch -k -1 --stdout $2 | git am -3 -k; }; f"
 
-    #subtree add
-    sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
     # initial empty commit
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
 
     # github pull requests
     test-pr = "!f() { git fetch origin +pull/$1/merge:pr/$1-merged && git checkout pr/$1-merged; }; f"
 [rerere]
-  enabled = true
+	enabled = false
 [rebase]
   autosquash = true
