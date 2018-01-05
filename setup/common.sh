@@ -43,3 +43,38 @@ function remove_existing_directories() {
      remove_existing_directory $direc
   done
 }
+
+# Link a source to a target, backing up the original if it is not a link
+# @param $1 target The link name
+# @param $2 source the source for the link
+function link_asset() {
+  local link_cmd="ln -s"
+  local target=$1
+  local source=$2
+  if [ -e $target ]; then
+    debug mv $target{,.bak}
+    mv $target{,.bak}
+  fi
+  debug $link_cmd $source $target
+  $link_cmd $source $target
+
+}
+
+# Link all specified assets to the given directory
+# @param $1 target directory for link
+# @param $2 source directory
+# @param $3..$n list of files and directories to link
+function link_assets() {
+  local target_dir=$1
+  shift 1
+  local source_dir=$1
+  shift 1
+  info "linking new assets from $source_dir -> $target_dir"
+  for asset in $*; do
+    source=$source_dir/$asset
+    target=$target_dir/$asset
+    if [ ! -L $target ]; then
+      link_asset $target $source
+    fi
+  done
+}
