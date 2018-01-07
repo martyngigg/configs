@@ -5,6 +5,7 @@
 # Modified by mgigg:
 #
 #  - removed bzr from command check
+#  - improved dir prompt to use a maximum amount of horizontal space
 #  - changed colour of context string for root/non-root
 #  - added newline
 #
@@ -170,7 +171,18 @@ prompt_hg() {
 
 # Dir: current leaf working directory
 prompt_dir() {
-  prompt_segment blue black '%~'
+  # Constants
+  local max_full_path_len=15
+
+  # first replace home with ~ and then apply rules
+  local short_cwd=${(D)PWD}
+  local short_cwd_len=${#short_cwd}
+  if [ $short_cwd_len -gt $max_full_path_len ]; then
+     (( start_idx = $short_cwd_len -  max_full_path_len + 2))
+     short_cwd=..${short_cwd[$start_idx,$short_cwd_len]}
+  fi
+
+  prompt_segment blue black "$short_cwd"
 }
 
 # Virtualenv: current working virtualenv
