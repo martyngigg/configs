@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -z "$DEBUG" ]; then
+  DEBUG=0
+fi
+
 # fix home for root
 if [ $(whoami) = "root" ]; then
   home="/root"
@@ -57,7 +61,6 @@ function link_asset() {
   fi
   debug $link_cmd $source $target
   $link_cmd $source $target
-
 }
 
 # Link all specified assets to the given directory
@@ -74,6 +77,7 @@ function link_assets() {
     source=$source_dir/$asset
     target=$target_dir/$asset
     if [ ! -L $target ]; then
+      info "  linking $source -> $target"
       link_asset $target $source
     fi
   done

@@ -7,10 +7,9 @@ setup_dir=$(cd $(dirname "$0") && pwd)
 . $setup_dir/common.sh
 
 # link files into destination
-ignored="setup.sh|setup-emacs-cpp.sh|README.md|.gitignore|setup|.git|.config"
 dotfiles_dir=$setup_dir/../dotfiles
-assets=$(ls -A1 $dotfiles_dir | egrep -v ignored | xargs)
+assets=$(cd $dotfiles_dir && find . -maxdepth 1 -type f | xargs)
 link_assets $home $dotfiles_dir $assets
 
 # link directories
-link_asset $dotfiles_dir/.config/powerline $home/.config/powerline
+link_asset $home/.config/powerline $dotfiles_dir/.config/powerline
