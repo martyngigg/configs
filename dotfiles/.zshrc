@@ -32,11 +32,56 @@ plugins=(
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
+# ------------------------------------------------------------------------------
+# Further customization
+# ------------------------------------------------------------------------------
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='emacs'
 fi
+
+# Activate command-not-found helpers
+[ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
+
+# Make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# ------------------------------------------------------------------------------
+# Replace various strings on pressing space
+# See http://zshwiki.org/home/examples/zleiab
+# ------------------------------------------------------------------------------
+typeset -Ag abbreviations
+abbreviations=(
+  "Im"    "| more"
+  "Ia"    "| awk"
+  "Ig"    "| grep"
+  "Ieg"   "| egrep"
+  "Ip"    "| $PAGER"
+  "Ih"    "| head"
+  "It"    "| tail"
+  "Is"    "| sort"
+  "Iv"    "| ${VISUAL:-${EDITOR}}"
+  "Iw"    "| wc"
+  "Ix"    "| xargs"
+)
+
+magic-abbrev-expand() {
+    local MATCH
+    LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
+    LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+    zle self-insert
+}
+
+no-magic-abbrev-expand() {
+  LBUFFER+=' '
+}
+
+zle -N magic-abbrev-expand
+zle -N no-magic-abbrev-expand
+bindkey " " magic-abbrev-expand
+bindkey "^x " no-magic-abbrev-expand
+bindkey -M isearch " " self-insert
+
+# ------------------------------------------------------------------------------
