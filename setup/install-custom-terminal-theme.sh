@@ -23,7 +23,8 @@ dconf write "$profile_dir/use-system-font" false
 dconf write "$profile_dir/default-size-rows" 49
 dconf write "$profile_dir/default-size-columns" 102
 dconf write "$profile_dir/audible-bell"  false
-
+dconf write "$profile_dir/use-custom-command" true
+dconf write "$profile_dir/custom-command" "'/usr/bin/tmux'"
 
 info "installing solarized theme for gnome terminal"
 $setup_dir/../thirdparty/gnome-terminal-colors-solarized/install.sh --scheme=light  --profile=Default --skip-dircolors
