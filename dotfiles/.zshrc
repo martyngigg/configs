@@ -48,6 +48,12 @@ fi
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Conda env if available
+[ -f $HOME/miniconda3/etc/profile.d/conda.sh ] && source $HOME/miniconda3/etc/profile.d/conda.sh
+
+# Add .local/bin to path
+[ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
+
 # ------------------------------------------------------------------------------
 # Replace various strings on pressing space
 # See http://zshwiki.org/home/examples/zleiab
