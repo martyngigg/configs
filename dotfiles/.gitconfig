@@ -140,3 +140,5 @@
 	enabled = false
 [rebase]
   autosquash = true
+[credential]
+	helper = cache
