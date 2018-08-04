@@ -2,8 +2,8 @@
 
 apt-get -y install \
   build-essential \
-  clang-3.6 \
-  clang-format-3.6 \
+  clang \
+  clang-format-5.0 \
   cmake-gui \
   cppcheck \
   curl \
