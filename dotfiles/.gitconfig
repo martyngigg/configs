@@ -135,7 +135,7 @@
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
 
     # github pull requests
-    test-pr = "!f() { git fetch origin +pull/$1/merge:pr/$1-merged && git checkout pr/$1-merged; }; f"
+    test-pr = "!f() { git fetch upstream +pull/$1/merge:pr/$1-merged && git checkout pr/$1-merged; }; f"
 [rerere]
 	enabled = false
 [rebase]
