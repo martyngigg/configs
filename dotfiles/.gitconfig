@@ -33,7 +33,7 @@
 [pull]
     default = current
 [clangFormat]
-    binary = /usr/bin/clang-format-3.5
+	binary = /usr/bin/clang-format-5.0
     style = LLVM
 [branch]
   autosetuprebase = always
