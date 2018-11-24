@@ -8,7 +8,7 @@
 export ZSH=$HOME/.repos/configs/thirdparty/oh-my-zsh
 
 # Local customizations
-ZSH_CUSTOM=$ZSH/../../thirdparty-custom/oh-my-zsh
+ZSH_CUSTOM=$ZSH/../../custom-zsh
 
 # Use modified theme in custom directory
 ZSH_THEME="agnoster-modified"
@@ -26,6 +26,7 @@ plugins=(
   docker-compose
   dircolors-solarized
   gitfast
+  zsh-autosuggestions
   web-search
 )
 

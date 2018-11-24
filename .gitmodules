@@ -16,3 +16,6 @@
 [submodule "thirdparty/oh-my-zsh"]
 	path = thirdparty/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "custom-zsh/plugins/zsh-autosuggestions"]
+	path = custom-zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
