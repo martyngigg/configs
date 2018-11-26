@@ -17,10 +17,6 @@ ZSH_THEME="agnoster-modified"
 # This makes repository status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Customize autosuggest
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,underline'
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-
 # Plugins
 plugins=(
   colored-man-pages
@@ -36,6 +32,10 @@ plugins=(
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+# Customize autosuggest
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,underline'
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # ------------------------------------------------------------------------------
 # Further customization
