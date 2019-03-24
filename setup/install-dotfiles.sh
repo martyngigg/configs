@@ -1,4 +1,5 @@
 #!/bin/bash
+# Link files to $HOME
 
 # here
 setup_dir=$(cd $(dirname "$0") && pwd)
@@ -13,3 +14,7 @@ link_assets $home $dotfiles_dir $assets
 
 # link directories
 link_asset $home/.config/powerline $dotfiles_dir/.config/powerline
+
+# setup vim plugin manager
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

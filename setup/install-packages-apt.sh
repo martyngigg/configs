@@ -21,6 +21,7 @@ apt-get -y install \
   git-gui \
   htop \
   ipython \
+  neovim \
   openssh-client \
   openssh-server \
   powerline \
