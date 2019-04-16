@@ -37,6 +37,7 @@
     style = LLVM
 [branch]
   autosetuprebase = always
+  autosetupmerge = false
 [apply]
   whitespace = nowarn
 [alias]
