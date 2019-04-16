@@ -56,7 +56,7 @@
     co = checkout
     br = branch
     bra = branch -ra
-    newtopic = "!f() { git fetch && git co --no-track -b "$1-$2" origin/master; }; f"
+    newtopic = "!f() { git fetch upstream master && git co --no-track -b "$1" upstream/master; }; f"
 
     # list commands
     le = log --oneline --decorate
