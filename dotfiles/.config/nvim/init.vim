@@ -8,7 +8,9 @@ set nocompatible                "Disable compatabilty with ancient vi
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
+
 " End plugin setup
+call plug#end()
 
 " General configuration
 filetype plugin indent on       "Load plugin files for file types and load indent.vim
