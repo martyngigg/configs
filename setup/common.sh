@@ -11,13 +11,6 @@ else
   home=$HOME
 fi
 
-function exit_if_command_not_available {
-  if [ -z $(which $1) ]; then
-    echo "Installation requires the $1 command to be available"
-    exit 1
-  fi
-}
-
 function info() {
   echo "--" $*
 }
@@ -26,6 +19,21 @@ function debug() {
   [ $DEBUG -eq 1 ] && echo "  " $*
 }
 
+function exit_if_command_not_available {
+  if [ -z $(which $1) ]; then
+    echo "Installation requires the $1 command to be available"
+    exit 1
+  fi
+}
+
+function exit_on_failure {
+  debug $*
+  $*
+  if [ $? -ne 0 ]; then
+    echo -e "\nExecuting '$*' failed."
+    exit $?
+  fi
+}
 
 # Remove a directory if it exists
 # @param $1 target
