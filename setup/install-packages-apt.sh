@@ -1,10 +1,8 @@
 #!/bin/bash
 
-apt-get -y install \
+sudo apt-get -y install \
   build-essential \
-  clang \
-  clang-format-5.0 \
-  cmake-gui \
+  cmake \
   cppcheck \
   curl \
   dconf-cli \
@@ -18,17 +16,11 @@ apt-get -y install \
   fonts-inconsolata \
   fonts-powerline \
   gdebi-core \
-  git-gui \
   htop \
-  ipython \
-  neovim \
+  python3-ipython \
   openssh-client \
   openssh-server \
   powerline \
-  python \
-  python-numpy \
-  python-pip \
-  python-requests \
   screen \
   tmux \
   silversearcher-ag \
