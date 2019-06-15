@@ -15,6 +15,7 @@ sudo apt-get -y autoremove
 info installing base packages
 sudo apt-get -y install \
   build-essential \
+  ninja-build \
   cmake \
   cppcheck \
   curl \
@@ -62,3 +63,6 @@ sudo apt-get -y install \
   docker-ce \
   docker-ce-cli \
   containerd.io \
+
+info adding $(whoami) to docker group - log out for changes to take effect
+sudo usermod -aG docker $(whoami)
