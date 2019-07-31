@@ -22,7 +22,7 @@ sudo apt-get -y install \
   dconf-cli \
   devscripts \
   doxygen \
-  emacs24 \
+  emacs25 \
   emacs-goodies-el \
   evince \
   fakeroot \
@@ -52,7 +52,7 @@ sudo apt-get -y install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # At time of writing there is no stable package for Ubuntu 19.04
-info add-apt-repository \
+sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    test"
