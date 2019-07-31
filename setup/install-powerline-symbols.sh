@@ -6,7 +6,7 @@ powerline_symbols_conf_url=https://github.com/powerline/powerline/raw/develop/fo
 
 # Destination directories
 fonts_home_path=$HOME/.fonts
-fonts_conf_home_path=$home/.fonts.conf.d
+fonts_conf_home_path=$HOME/.fonts.conf.d
 
 if [ ! -f $fonts_home_path/PowerlineSymbols.otf ]; then
   test -d $fonts_home_path || mkdir $fonts_home_path
