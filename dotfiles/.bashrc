@@ -63,13 +63,6 @@ if [ -f ~/.bash_aliases -o -h ~/.bash_aliases ]; then
 fi
 
 ################################################################################
-# conda
-################################################################################
-if [ -f ~/miniconda3/etc/profile.d/conda.sh  ]; then
-    . ~/miniconda3/etc/profile.d/conda.sh
-fi
-
-################################################################################
 # add .local/bin to path
 ################################################################################
 if [ -d $HOME/.local/bin ]; then
@@ -94,3 +87,18 @@ fi
 ################################################################################
 
 unset color_prompt color_dir
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mgigg/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mgigg/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mgigg/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mgigg/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
