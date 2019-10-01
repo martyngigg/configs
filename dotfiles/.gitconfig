@@ -33,7 +33,7 @@
 [pull]
     default = current
 [clangFormat]
-    binary = /usr/bin/clang-format-6.0
+    binary = /usr/bin/clang-format-5.0
     style = LLVM
 [branch]
   autosetuprebase = always
@@ -98,6 +98,9 @@
     # pull requests
     test-pr = "!f() { git fetch upstream +pull/$1/merge:pr/$1-merged && git checkout pr/$1-merged; }; f"
     prune-pr = "!f() { git branch | grep pr/ | xargs git branch -D }; f"
+
+    # make safer force push easier
+    pushf = push --force-with-lease
 [rerere]
 	enabled = true
 [rebase]
