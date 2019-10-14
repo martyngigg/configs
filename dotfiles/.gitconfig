@@ -51,6 +51,8 @@
     caa = commit -a --amend -C HEAD
 
     filelog = log -u
+    files-changed = "!f() { git log --name-only --format= upstream/master.. | sort | uniq;  }; f"
+    clformat = "!f() { for f in `git files-changed`; do clang-format-5.0 -i $f; done;  }; f"
     fl = log -u
     ai = add --interactive
     co = checkout
@@ -92,8 +94,8 @@
     theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 
     # remotes
-    fetcur="!f() { CURBRANCH=$(git rev-parse --abbrev-ref HEAD) && git fetch origin +refs/heads/$CURBRANCH:refs/remotes/origin/$CURBRANCH; };f"
-    pulcur="!f() { CURBRANCH=$(git rev-parse --abbrev-ref HEAD) && git pull origin +refs/heads/$CURBRANCH:refs/remotes/origin/$CURBRANCH; };f"
+    fetcur="!f() { CURBRANCH=$(git rev-parse --abbrev-ref HEAD) && git fetch origin +refs/heads/$CURBRANCH:refs/remotes/origin/$CURBRANCH; }; f"
+    pulcur="!f() { CURBRANCH=$(git rev-parse --abbrev-ref HEAD) && git pull origin +refs/heads/$CURBRANCH:refs/remotes/origin/$CURBRANCH; }; f"
 
     # pull requests
     test-pr = "!f() { git fetch upstream +pull/$1/merge:pr/$1-merged && git checkout pr/$1-merged; }; f"
@@ -101,6 +103,9 @@
 
     # make safer force push easier
     pushf = push --force-with-lease
+
+    # sync with upstream master
+    sync-up = "!f() { git fetch upstream master && git rebase FETCH_HEAD; }; f"
 [rerere]
 	enabled = true
 [rebase]
