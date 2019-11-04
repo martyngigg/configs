@@ -52,7 +52,8 @@
 
     filelog = log -u
     files-changed = "!f() { git log --name-only --format= upstream/master.. | sort | uniq;  }; f"
-    clformat = "!f() { for f in `git files-changed`; do clang-format-5.0 -i $f; done;  }; f"
+    cppfiles-changed = "!f() { git log --name-only --format= upstream/master.. | sort | uniq | grep -E \"\\.cpp|\\.h|\\.tcc\"; }; f"
+    clformat = "!f() { for f in `git cppfiles-changed`; do clang-format-5.0 -i $f; done;  }; f"
     fl = log -u
     ai = add --interactive
     co = checkout
@@ -112,3 +113,5 @@
   autosquash = true
 [credential]
 	helper = cache
+[diff]
+	noprefix = true
