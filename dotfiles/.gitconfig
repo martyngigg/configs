@@ -59,7 +59,7 @@
     co = checkout
     br = branch
     bra = branch -ra
-    newtopic = "!f() { git fetch upstream master && git co --no-track -b "$1" upstream/master; }; f"
+    newtopic = "!f() { git fetch upstream ${2:-master} && git co --no-track -b "$1" FETCH_HEAD; }; f"
 
     # list commands
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
