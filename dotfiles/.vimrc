@@ -107,21 +107,10 @@ call vundle#rc(s:editor_root . '/bundle')
 "Plugins
 Plugin 'gmarik/vundle.vim'                "Required
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'szw/vim-ctrlspace'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'mileszs/ack.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-eunuch'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'tpope/vim-markdown'
-Plugin 'rhysd/vim-clang-format'
+Plugin 'bfrg/vim-cpp-modern'
 
 if vundle_installed == 0
     echo "Installing plugins, please ignore key map error messages"
@@ -136,29 +125,15 @@ filetype plugin indent on                "Renable file-type detection
 "Plugins Settings
 "================="
 "Solarized theme
-set background=dark
+set background=light
 colorscheme solarized
 highlight SignColumn ctermbg=8
 
-"Syntastic options
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = {'mode' : 'passive'}
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_cpp_checkers = ['gcc', 'clang']
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = ['--rcfile=~/.pylintrc']
-nmap <silent> <leader>l :SyntasticCheck<CR>
+"Git Gutter
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_sign_column_always = 1
 
-"Ultisnip options
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-
-"Airline options
+"Airline
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -168,18 +143,3 @@ let g:airline_detect_spell = 0
 let g:airline_detect_modified = 1
 let g:airline_theme="solarized"
 let g:airline_solarized_normal_green = 1
-" Required for CtrlSpace integration
-let g:airline_exclude_preview = 1
-" End CtrlSpace integration
-let g:airline#extensions#whitespace#enabled=0
-
-"CtrlSpace
-set hidden
-let g:ctrlspace_project_root_markers = [".git", ".hg", ".svn", ".bzr", "_darcs", "CVS", "proj.sln"]
-
-"NerdTree
-let g:NERDTreeIgnore = ['\.pyc$', '__pycache__']
-
-"Git Gutter
-let g:gitgutter_highlight_lines = 1
-let g:gitgutter_sign_column_always = 1
