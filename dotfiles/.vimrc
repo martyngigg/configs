@@ -111,6 +111,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bfrg/vim-cpp-modern'
+Plugin 'ycm-core/YouCompleteMe'
 
 if vundle_installed == 0
     echo "Installing plugins, please ignore key map error messages"
@@ -143,3 +144,6 @@ let g:airline_detect_spell = 0
 let g:airline_detect_modified = 1
 let g:airline_theme="solarized"
 let g:airline_solarized_normal_green = 1
+
+"YouCompleteMe
+let g:ycm_auto_trigger = 1
