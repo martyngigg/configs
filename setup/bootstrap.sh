@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function info {
+  echo "--" $*
+}
+
 function exit_if_command_not_available {
   if [ -z $(which $1) ]; then
     echo "Installation requires the $1 command to be available"
