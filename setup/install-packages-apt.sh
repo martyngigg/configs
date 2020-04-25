@@ -19,7 +19,7 @@ sudo apt-get -y install \
   curl \
   dconf-cli \
   docker.io \
-  emacs25 \
+  emacs \
   emacs-goodies-el \
   evince \
   fakeroot \
