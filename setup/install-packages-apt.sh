@@ -7,21 +7,18 @@ info updating package lists
 sudo apt-get -y update
 
 info upgrading current packages
-sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
 
 info removing old packages
 sudo apt-get -y autoremove
 
-info installing base packages
+info installing packages
 sudo apt-get -y install \
-  build-essential \
-  ninja-build \
-  cmake \
-  cppcheck \
+  apt-transport-https \
+  ca-certificates \
   curl \
   dconf-cli \
-  devscripts \
-  doxygen \
+  docker.io \
   emacs25 \
   emacs-goodies-el \
   evince \
@@ -30,39 +27,17 @@ sudo apt-get -y install \
   fonts-inconsolata \
   fonts-powerline \
   gdebi-core \
+  gnupg-agent \
   htop \
-  python3-ipython \
+  mosh \
   openssh-client \
-  openssh-server \
   powerline \
   screen \
   tmux \
   silversearcher-ag \
+  software-properties-common \
   xsel \
   zsh
-
-info adding docker-ce repo
-# allow apt to use a repository over HTTPS:
-sudo apt-get -y install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# At time of writing there is no stable package for Ubuntu 19.04
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   test"
-sudo apt-get -y update
-
-info installing docker
-sudo apt-get -y install \
-  docker-ce \
-  docker-ce-cli \
-  containerd.io \
 
 info adding $(whoami) to docker group - log out for changes to take effect
 sudo usermod -aG docker $(whoami)
