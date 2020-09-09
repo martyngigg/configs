@@ -40,6 +40,9 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # ------------------------------------------------------------------------------
 # Further customization
 # ------------------------------------------------------------------------------
+# Allow local customizations
+[ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
