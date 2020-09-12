@@ -13,4 +13,4 @@ Use the `bootstrap.sh` script to clone the repository:
 
 This will clone the repository into `$HOME/.repos/configs`. Complete the setup by running:
 
-    bash $HOME/.repos/configs/setup/setup.sh
+    bash $HOME/.repos/configs/install.sh
