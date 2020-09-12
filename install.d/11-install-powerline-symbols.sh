@@ -1,4 +1,5 @@
 #!/bin/sh
+# Install powerline fonts
 
 # Source URLs
 powerline_symbols_url=https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf

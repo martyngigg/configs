@@ -26,36 +26,6 @@ function exit_if_command_not_available {
   fi
 }
 
-function exit_on_failure {
-  debug $*
-  $*
-  if [ $? -ne 0 ]; then
-    echo -e "\nExecuting '$*' failed."
-    exit $?
-  fi
-}
-
-# Remove a directory if it exists
-# @param $1 target
-function remove_existing_directory() {
-  local target=$1
-  shift 1
-  if [ -d $target ]; then
-    rm -rf $target
-  fi
-}
-
-# Remove a directory if it exists
-# @param $1..$n directories to remove
-function remove_existing_directories() {
-  local target=$1
-  shift 1
-  info "removing directories $*"
-  for direc in $*; do
-     remove_existing_directory $direc
-  done
-}
-
 # Link a source to a target, backing up the original if it is not a link
 # @param $1 target The link name
 # @param $2 source the source for the link
@@ -82,6 +52,7 @@ function link_assets() {
   shift 1
   info "linking new assets from $source_dir -> $target_dir"
   for asset in $*; do
+    asset=$(basename $asset)
     source=$source_dir/$asset
     target=$target_dir/$asset
     if [ ! -L $target ]; then

@@ -1,10 +1,15 @@
 #!/bin/bash
+# Install a custom shell profile to configure terminal fonts etc
 
-# here
-setup_dir=$(cd $(dirname "$0") && pwd)
+# only install if gnome terminal is installed
+if [ -z "$(which gnome-terminal)" ]; then
+  info gnome-terminal command not found. Skipping terminal profile creation
+  exit 0
+fi
 
-# source utilities
-. $setup_dir/common.sh
+
+# utilities
+. scripts/common.sh
 
 # create new default gnome profile
 dconf_dir=/org/gnome/terminal/legacy
@@ -27,4 +32,4 @@ dconf write "$profile_dir/use-custom-command" true
 dconf write "$profile_dir/custom-command" "'/usr/bin/tmux'"
 
 info "installing solarized theme for gnome terminal"
-$setup_dir/../thirdparty/gnome-terminal-colors-solarized/install.sh --scheme=light  --profile=Default --skip-dircolors
+thirdparty/gnome-terminal-colors-solarized/install.sh --scheme=light  --profile=Default --skip-dircolors

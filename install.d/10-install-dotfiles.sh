@@ -1,14 +1,11 @@
 #!/bin/bash
-# Link files to $HOME
-
-# here
-setup_dir=$(cd $(dirname "$0") && pwd)
+# Link files to $HOME/.
 
 # utilities
-. $setup_dir/common.sh
+source scripts/common.sh
 
 # link files into toplevel
-dotfiles_dir=$setup_dir/../dotfiles
+dotfiles_dir=$(readlink -e dotfiles)
 assets=$(cd $dotfiles_dir && find . -maxdepth 1 -type f | xargs)
 link_assets $home $dotfiles_dir $assets
 
