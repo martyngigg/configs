@@ -9,7 +9,7 @@
 
 Use the `bootstrap.sh` script to clone the repository:
 
-    wget https://github.com/martyngigg/configs/raw/master/setup/bootstrap.sh -q -O - | bash
+    wget https://github.com/martyngigg/configs/raw/master/bootstrap.sh -q -O - | bash
 
 This will clone the repository into `$HOME/.repos/configs`. Complete the setup by running:
 
