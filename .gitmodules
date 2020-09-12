@@ -10,9 +10,6 @@
 [submodule "setup/qtcreator-solarized"]
 	path = thirdparty/qtcreator-solarized
 	url = https://github.com/curonian/qtcreator-solarized
-[submodule "setup/dockerfile-mode"]
-	path = thirdparty/dockerfile-mode
-	url = https://github.com/spotify/dockerfile-mode.git
 [submodule "thirdparty/oh-my-zsh"]
 	path = thirdparty/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
