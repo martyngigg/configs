@@ -33,7 +33,7 @@ function link_asset() {
   local link_cmd="ln -s"
   local target=$1
   local source=$2
-  if [ -e $target ]; then
+  if [ -L $target ]; then
     debug mv $target{,.bak}
     mv $target{,.bak}
   fi
@@ -55,7 +55,7 @@ function link_assets() {
     asset=$(basename $asset)
     source=$source_dir/$asset
     target=$target_dir/$asset
-    if [ ! -L $target ]; then
+    if [[ ! -e $(readlink $target) ]]; then
       info "  linking $source -> $target"
       link_asset $target $source
     fi
