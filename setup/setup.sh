@@ -26,7 +26,6 @@ remove_existing_directories $HOME/Music $HOME/Public $HOME/Templates $HOME/Video
 exit_on_failure bash $setup_dir/install-packages-apt.sh
 exit_on_failure bash $setup_dir/install-dotfiles.sh
 exit_on_failure bash $setup_dir/install-powerline-symbols.sh
-exit_on_failure bash $setup_dir/install-solarized-dircolors.sh
 exit_on_failure bash $setup_dir/install-custom-terminal-theme.sh
 exit_on_failure bash $setup_dir/enable-user-services.sh
 exit_on_failure bash $setup_dir/change-default-shell.sh
