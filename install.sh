@@ -19,14 +19,15 @@ function exit_on_failure {
 # where are we
 this_dir=$( cd "$( dirname "$0" )" && pwd )
 
-# are we on a system we understand - basically a Debian-like system at the moment
-if [ -z "$(which dpkg)" ]; then
-  echo "Unable to find dpkg. Is this a Debian-like distro?"
-  exit 1
-fi
+# are we on a system we understand
+source scripts/systeminfo.sh
 
 # main
-install_d_dir=$this_dir/install.d
+if [ $ON_DEBIAN = true ]; then
+  install_d_dir=$this_dir/install.d/debian
+else
+  install_d_dir=$this_dir/install.d/macos
+fi
 for install_file in `ls $install_d_dir/*.sh | sort -V`; do
   exit_on_failure bash $install_file
 done
