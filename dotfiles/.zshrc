@@ -17,18 +17,29 @@ ZSH_THEME="agnoster-modified"
 # This makes repository status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Allow searching /usr/local for zsh completions
+ZSH_DISABLE_COMPFIX="true"
+
 # Plugins
 plugins=(
   colored-man-pages
   common-aliases
   debian
-  docker
-  docker-compose
-  dircolors-solarized
   gitfast
   zsh-autosuggestions
   web-search
 )
+if type "dircolors" > /dev/null; then
+  plugins+=(
+    dircolors-solarized
+  )
+fi
+if type "docker" > /dev/null; then
+  plugins+=(
+    docker
+    docker-compose
+  )
+fi
 
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
