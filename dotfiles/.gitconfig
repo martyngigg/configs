@@ -95,6 +95,10 @@
     r = reset
     rh = reset --hard
 
+    # rebase commands
+    rb = rebase
+    frbu = "!f() { git fetch upstream $1 && git rebase FETCH_HEAD; }; f"
+
     # stash
     sl = stash list
     sp = stash pop

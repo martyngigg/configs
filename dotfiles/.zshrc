@@ -45,7 +45,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # Customize autosuggest
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,underline'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='underline'
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # ------------------------------------------------------------------------------
@@ -115,3 +115,25 @@ bindkey "^x " no-magic-abbrev-expand
 bindkey -M isearch " " self-insert
 
 # ------------------------------------------------------------------------------
+
+# The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/dmn58364/Code/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dmn58364/Code/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+# if [ -f '/Users/dmn58364/Code/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dmn58364/Code/google-cloud-sdk/completion.zsh.inc'; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/dmn58364/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/dmn58364/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/dmn58364/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/dmn58364/opt/miniconda3/bin:$PATH"
+    fi
+fi
+#unset __conda_setup
+# <<< conda initialize <<<
+
