@@ -70,13 +70,8 @@ fi
 # Override default less options to disable the pager for small input
 export LESS=-FRX
 
-# Conda env if available
-[ -f $HOME/miniconda3/etc/profile.d/conda.sh ] && source $HOME/miniconda3/etc/profile.d/conda.sh
-
 # Add .local/bin to path
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
-
-
 
 # ------------------------------------------------------------------------------
 # Replace various strings on pressing space
@@ -116,12 +111,6 @@ bindkey -M isearch " " self-insert
 
 # ------------------------------------------------------------------------------
 
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/dmn58364/Code/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dmn58364/Code/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-# if [ -f '/Users/dmn58364/Code/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dmn58364/Code/google-cloud-sdk/completion.zsh.inc'; fi
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/dmn58364/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -134,6 +123,6 @@ else
         export PATH="/Users/dmn58364/opt/miniconda3/bin:$PATH"
     fi
 fi
-#unset __conda_setup
+unset __conda_setup
 # <<< conda initialize <<<
 
