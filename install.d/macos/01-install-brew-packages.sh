@@ -3,8 +3,8 @@
 
 # standard formulae
 brew install \
-  the_silver_searcher \
-  python@3.8
+  mosh \
+  the_silver_searcher
 
 # cask installs
 brew cask install iterm2
