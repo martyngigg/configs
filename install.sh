@@ -3,6 +3,16 @@
 #           config scripts stored here
 DEBUG=1
 
+# script must be run as subshell and not sourced
+(return 0 2>/dev/null) && SOURCED=1 || SOURCED=0
+if [ "$SOURCED" == "1"  ]; then
+  echo "Script must be run with subshell and not sourced with '.'"
+  return 1
+fi
+
+# put us in this directory
+pushd $(dirname $0)
+
 # utilities
 source scripts/common.sh
 
