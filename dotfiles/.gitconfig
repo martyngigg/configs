@@ -45,6 +45,7 @@
 [branch]
     autosetuprebase = always
     autosetupmerge = false
+    sort = authordate
 [rebase]
     # Automatically reposition !fixup/!squash commits in interactive rebase (useful with git commit --fixup/squash)
     autosquash = true
@@ -133,3 +134,5 @@
     helper = cache
 [diff]
     noprefix = true
+[column]
+    branch = auto
