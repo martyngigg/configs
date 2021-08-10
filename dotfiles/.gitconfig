@@ -136,3 +136,5 @@
     noprefix = true
 [column]
     branch = auto
+[init]
+	defaultBranch = main
