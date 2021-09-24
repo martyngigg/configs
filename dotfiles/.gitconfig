@@ -120,7 +120,7 @@
     test-pr = "!f() { git fetch $1 pull/$2/merge:pr/$2-merged && git checkout pr/$2-merged; }; f"
     sync-pr = "!f() { git fetch $1 +pull/$2/merge && git reset --hard FETCH_HEAD; }; f"
     # Remove all branches starting pr/
-    prune-pr = "!f() { git branch | grep pr/ | xargs git branch -D }; f"
+    prune-pr = ! git branch | grep 'pr/' | xargs git branch -D
 
     # When pushing a new branch upstream, set the local branch to track it
     pushu = push --set-upstream
