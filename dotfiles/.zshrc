@@ -73,6 +73,10 @@ export LESS=-FRX
 # Add .local/bin to path
 [ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 
+# Custom key bindings
+bindkey "^[^[[D" backward-word
+bindkey "^[^[[C" forward-word
+
 # ------------------------------------------------------------------------------
 # Replace various strings on pressing space
 # See http://zshwiki.org/home/examples/zleiab
