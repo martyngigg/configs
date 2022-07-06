@@ -3,6 +3,7 @@
 
 # standard formulae
 brew install \
+  bat \
   ccache \
   git \
   htop \
