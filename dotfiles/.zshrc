@@ -77,7 +77,29 @@ export LESS=-FRX
 bindkey "^[^[[D" backward-word
 bindkey "^[^[[C" forward-word
 
+# Better cat/less
+# bat has a different name on ubunutu
+if  [ "$(command -v batcat)" ]; then
+    alias bat=batcat
+fi
 
+# source-highlighting with less
+if [ "$(command -v bat)" ]; then
+    alias less=bat
+    # use less as the pager for bat
+    BAT_PAGER="less -RF"
+    export BAT_PAGER
+else
+    if [ "$(command -v highlight)" ]; then
+      LESSOPEN="| $(command -v highlight) %s --out-format xterm256 --line-numbers --quiet --force --style solarized-dark"
+      export LESSOPEN
+    elif [ "$(command -v src-hilite-lesspipe.sh)" ]; then
+      LESSOPEN="| $(command -v src-hilite-lesspipe.sh) %s"
+      export LESSOPEN
+    fi
+    alias less='less -m -N -g -i -J --line-numbers --underline-special'
+    export LESS=' -R '
+fi
 
 
 # -----------------------------------------------------------------------------
