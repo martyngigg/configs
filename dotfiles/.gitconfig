@@ -98,7 +98,7 @@
 
     # rebase commands
     rb = rebase
-    frbu = "!f() { git fetch upstream $1 && git rebase FETCH_HEAD; }; f"
+    frb = "!f() { git fetch ${2:-upstream} $1 && git rebase FETCH_HEAD; }; f"
 
     # stash
     sl = stash list
