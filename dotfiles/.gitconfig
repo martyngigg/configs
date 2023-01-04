@@ -2,7 +2,7 @@
     name = Martyn Gigg
     email = martyn.gigg@gmail.com
 [core]
-    editor = emacs
+    editor = vim
 [color]
     branch = auto
     diff = auto
