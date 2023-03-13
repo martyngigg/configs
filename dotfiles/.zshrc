@@ -101,6 +101,11 @@ else
     export LESS=' -R '
 fi
 
+# quick access to arguments of ripgrep
+if [ "$(command -v rg)" ]; then
+    # --no-heading is useful to combine file:line number to easily open in other editors
+    alias rgnh='rg --no-heading'
+fi
 
 # -----------------------------------------------------------------------------
 
