@@ -64,15 +64,15 @@
     caah = commit --all --amend --reuse-message=HEAD
 
     filelog = log -u
-    files-changed = "!f() { git log --name-only --format= ${1:-upstream/main}.. | sort | uniq;  }; f"
-    cppfiles-changed = "!f() { git log --name-only --format= ${1:-upstream/main}.. | sort | uniq | grep -E \"\\.cpp|\\.h|\\.tcc\"; }; f"
+    files-changed = "!f() { git log --name-only --format= ${1:-origin/main}.. | sort | uniq;  }; f"
+    cppfiles-changed = "!f() { git log --name-only --format= ${1:-origin/main}.. | sort | uniq | grep -E \"\\.cpp|\\.h|\\.tcc\"; }; f"
     clformat = "!f() { for f in `git cppfiles-changed`; do clang-format-6.0 -i $f; done;  }; f"
     fl = log -u
     ai = add --interactive
     co = checkout
     br = branch
     bra = branch -ra
-    newtopic = "!f() { git fetch ${2:-upstream} ${3:-main} && git co --no-track -b "$1" FETCH_HEAD; }; f"
+    newtopic = "!f() { git fetch ${2:-origin} ${3:-main} && git co --no-track -b "$1" FETCH_HEAD; }; f"
 
     # list commands
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -98,7 +98,7 @@
 
     # rebase commands
     rb = rebase
-    frb = "!f() { git fetch ${2:-upstream} $1 && git rebase FETCH_HEAD; }; f"
+    frb = "!f() { git fetch ${2:-origin} $1 && git rebase FETCH_HEAD; }; f"
 
     # stash
     sl = stash list
