@@ -20,6 +20,14 @@ Vagrant.configure('2') do |config|
   end
   config.disksize.size = DISK_SIZE
   config.vm.synced_folder "/Users", "/Users"
+
+  # VBoxClient is used by the vbguest plugin to install the guest additions.
+  # It requires libXt that is not installed by default on Ubuntu 20.04 but this
+  # must be done before the provisioning step so we use a hook on the vbguest
+  # plugin
+  config.vm.define "docker-engine" do |c|
+    c.vbguest.installer_hooks[:before_install] = ["apt-get update", "apt-get install -y libxt6 libxmu6", "sleep 1"]
+  end
   config.vm.provision 'shell', path: 'provision.sh'
 
   # Configuration for Port Forwarding

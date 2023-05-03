@@ -112,7 +112,7 @@ if type "docker" > /dev/null; then
   # appears to hang for a breif moment when using the hostname...
   export DOCKER_HOST=tcp://192.168.63.4:2375
 
-  # Aliases to work with docker/vagrant VM
+  # Aliase to work with docker/vagrant VM
   docker-vagrant() {
     pushd $VCS_CFGS_DIR/vagrant-docker-engine
     vagrant $1
