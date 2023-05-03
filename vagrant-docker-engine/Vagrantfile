@@ -5,12 +5,12 @@ CPUS = '4'
 MEMORY = '8198'
 DISK_SIZE = '50GB'
 FROM_VAGRANT_BOX = 'ubuntu/focal64'
-IP_ADDR = '192.168.53.4'
+IP_ADDR = '192.168.63.4'
 
 Vagrant.configure('2') do |config|
   config.vm.box = FROM_VAGRANT_BOX
   config.vm.hostname = 'docker.local'
-  config.vm.network 'private_network', IP_ADDR
+  config.vm.network 'private_network', ip: IP_ADDR
   config.vm.hostname = "docker.local"
   config.vm.network 'forwarded_port', guest: 2375, host: 2375, id: 'dockerd'
   config.vm.provider 'virtualbox' do |vb|
