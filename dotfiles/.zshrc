@@ -139,9 +139,25 @@ else
     fi
 fi
 unset __conda_setup
+
+if [ -f "/Users/dmn58364/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/dmn58364/opt/mambaforge/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
 
-# Detect if a conda environment should be activated
-if [ -n "${LOCAL_CONDA_ACTIVATE}"  ]; then
-    conda activate "${LOCAL_CONDA_ACTIVATE}"
+# Conda/mamba aliases
+if [ -f "/Users/dmn58364/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
+  mact() {
+    mamba activate $1
+  }
+  menv() {
+    mamba env "$@"
+  }
+  menv-upd() {
+    mamba env update --file $1 --prune
+  }
+  mupd() {
+    mamba update -n base mamba
+  }
 fi
+
