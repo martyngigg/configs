@@ -108,7 +108,8 @@ fi
 
 # docker - uses vagrant-based setup to avoid Docker Desktop
 if type "docker" > /dev/null; then
-  # CLI talks to Vagrant VM
+  # CLI talks to Vagrant VM. Use IP rather than docker.local as docker command
+  # appears to hang for a breif moment when using the hostname...
   export DOCKER_HOST=tcp://192.168.63.4:2375
 
   # Aliases to work with docker/vagrant VM
