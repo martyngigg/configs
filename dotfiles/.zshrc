@@ -1,14 +1,13 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # ------------------------------------------------------------------------------
 # Oh My Zsh configuration
 # ------------------------------------------------------------------------------
+# Path to config VCS files
+export VCS_CFGS_DIR=$HOME/.repos/configs
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.repos/configs/thirdparty/oh-my-zsh
+export ZSH=$VCS_CFGS_DIR/thirdparty/oh-my-zsh
 
 # Local customizations
-ZSH_CUSTOM=$ZSH/../../custom-zsh
+ZSH_CUSTOM=$VCS_CFGS_DIR/custom-zsh
 
 # Use modified theme in custom directory
 ZSH_THEME="agnoster-modified"
@@ -79,18 +78,18 @@ bindkey "^[^[[C" forward-word
 
 # Better cat/less
 # bat has a different name on ubunutu
-if  [ "$(command -v batcat)" ]; then
+if type "batcat" > /dev/null; then
     alias bat=batcat
 fi
 
 # source-highlighting with less
-if [ "$(command -v bat)" ]; then
+if type "bat" > /dev/null; then
     alias less=bat
     # use less as the pager for bat
     BAT_PAGER="less -RF"
     export BAT_PAGER
 else
-    if [ "$(command -v highlight)" ]; then
+    if type "highlight" > /dev/null; then
       LESSOPEN="| $(command -v highlight) %s --out-format xterm256 --line-numbers --quiet --force --style solarized-dark"
       export LESSOPEN
     elif [ "$(command -v src-hilite-lesspipe.sh)" ]; then
@@ -102,9 +101,27 @@ else
 fi
 
 # quick access to arguments of ripgrep
-if [ "$(command -v rg)" ]; then
+if type "rg" > /dev/null; then
     # --no-heading is useful to combine file:line number to easily open in other editors
     alias rgnh='rg --no-heading'
+fi
+
+# docker - uses vagrant-based setup to avoid Docker Desktop
+if type "docker" > /dev/null; then
+  # CLI talks to Vagrant VM
+  export DOCKER_HOST=tcp://192.168.63.4:2375
+
+  # Aliases to work with docker/vagrant VM
+  docker-vagrant() {
+    pushd $VCS_CFGS_DIR/vagrant-docker-engine
+    vagrant $1
+    popd
+  }
+fi
+
+# docker-compose
+if type "docker-compose" > /dev/null; then
+  alias dcmp='docker-compose'
 fi
 
 # -----------------------------------------------------------------------------
