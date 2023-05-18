@@ -8,9 +8,12 @@ brew install \
   git \
   htop \
   mosh \
-  the_silver_searcher
+  ripgrep \
+  the_silver_searcher \
+  watch
 
 # cask installs
 brew cask install \
+  virtualbox \
   iterm2 \
   visual-studio-code
