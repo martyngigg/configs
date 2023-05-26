@@ -50,6 +50,9 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # ------------------------------------------------------------------------------
 # Further customization
 # ------------------------------------------------------------------------------
+# Add .local/bin to path
+[ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
+
 # Allow local customizations
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 
@@ -68,9 +71,6 @@ fi
 
 # Override default less options to disable the pager for small input
 export LESS=-FRX
-
-# Add .local/bin to path
-[ -d $HOME/.local/bin ] && export PATH=$HOME/.local/bin:$PATH
 
 # Custom key bindings
 bindkey "^[^[[D" backward-word
