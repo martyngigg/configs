@@ -106,6 +106,36 @@ if type "rg" > /dev/null; then
     alias rgnh='rg --no-heading'
 fi
 
+# perform a full brew upgrade
+if type "brew" > /dev/null; then
+  do-brew-upgrades() {
+    brew update
+    brew upgrade
+    brew cleanup
+  }
+else
+  # cover case that brew is not installed
+  do-brew-upgrades() {
+  }
+fi
+
+# perform a full mamba upgrade of base environment
+if type "mamba" > /dev/null; then
+  do-mamba-upgrades() {
+    mamba update --name base --all
+  }
+else
+  # do nothing if mamba is not installed
+  do-mamba-upgrades() {
+  }
+fi
+
+# one-shot command to install all package updates
+do-package-upgrades() {
+  do-brew-upgrades
+  do-mamba-upgrades
+}
+
 # docker - uses vagrant-based setup to avoid Docker Desktop
 if type "docker" > /dev/null; then
   # CLI talks to Vagrant VM. Use IP rather than docker.local as docker command
