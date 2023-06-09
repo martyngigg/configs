@@ -106,35 +106,6 @@ if type "rg" > /dev/null; then
     alias rgnh='rg --no-heading'
 fi
 
-# perform a full brew upgrade
-if type "brew" > /dev/null; then
-  do-brew-upgrades() {
-    brew update
-    brew upgrade
-    brew cleanup
-  }
-else
-  # cover case that brew is not installed
-  do-brew-upgrades() {
-  }
-fi
-
-# perform a full mamba upgrade of base environment
-if type "mamba" > /dev/null; then
-  do-mamba-upgrades() {
-    mamba update --name base --all
-  }
-else
-  # do nothing if mamba is not installed
-  do-mamba-upgrades() {
-  }
-fi
-
-# one-shot command to install all package updates
-do-package-upgrades() {
-  do-brew-upgrades
-  do-mamba-upgrades
-}
 
 # docker - uses vagrant-based setup to avoid Docker Desktop
 if type "docker" > /dev/null; then
@@ -191,4 +162,34 @@ if [ -f "/Users/dmn58364/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
     mamba update -n base mamba
   }
 fi
+# perform a full brew upgrade
+if type "brew" > /dev/null; then
+  do-brew-upgrades() {
+    brew update
+    brew upgrade
+    brew cleanup
+  }
+else
+  # cover case that brew is not installed
+  do-brew-upgrades() {
+  }
+fi
+
+# perform a full mamba upgrade of base environment
+if type "mamba" > /dev/null; then
+  do-mamba-upgrades() {
+    mamba update --name base --all
+  }
+else
+  # do nothing if mamba is not installed
+  do-mamba-upgrades() {
+  }
+fi
+
+# one-shot command to install all package updates
+do-package-upgrades() {
+  do-brew-upgrades
+  do-mamba-upgrades
+}
+
 
