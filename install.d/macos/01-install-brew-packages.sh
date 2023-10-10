@@ -7,6 +7,7 @@ brew install \
   ccache \
   git \
   htop \
+  limactl \
   mosh \
   ripgrep \
   the_silver_searcher \

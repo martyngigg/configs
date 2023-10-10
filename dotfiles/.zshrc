@@ -106,21 +106,6 @@ if type "rg" > /dev/null; then
     alias rgnh='rg --no-heading'
 fi
 
-
-# docker - uses vagrant-based setup to avoid Docker Desktop
-if type "docker" > /dev/null; then
-  # CLI talks to Vagrant VM. Use IP rather than docker.local as docker command
-  # appears to hang for a breif moment when using the hostname...
-  export DOCKER_HOST=tcp://192.168.63.4:2375
-
-  # Aliase to work with docker/vagrant VM
-  docker-vagrant() {
-    pushd $VCS_CFGS_DIR/vagrant-docker-engine
-    vagrant $1
-    popd
-  }
-fi
-
 # docker-compose
 if type "docker-compose" > /dev/null; then
   alias dcmp='docker-compose'
