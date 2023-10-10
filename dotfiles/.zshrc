@@ -130,21 +130,17 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dmn58364/opt/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/dmn58364/opt/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/dmn58364/opt/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/dmn58364/opt/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/Users/dmn58364/opt/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/dmn58364/opt/miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/dmn58364/opt/mambaforge/bin:$PATH"
+        export PATH="/Users/dmn58364/opt/miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
-
-if [ -f "/Users/dmn58364/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/Users/dmn58364/opt/mambaforge/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
 
 # Conda/mamba aliases
