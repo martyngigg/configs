@@ -143,21 +143,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Conda/mamba aliases
-if [ -f "/Users/dmn58364/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
-  mact() {
-    mamba activate $1
-  }
-  menv() {
-    mamba env "$@"
-  }
-  menv-upd() {
-    mamba env update --file $1 --prune
-  }
-  mupd() {
-    mamba update -n base mamba
-  }
-fi
+# Packaging-related aliases
 # perform a full brew upgrade
 if type "brew" > /dev/null; then
   do-brew-upgrades() {
