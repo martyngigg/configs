@@ -9,6 +9,7 @@ brew install \
   htop \
   limactl \
   mosh \
+  nvm \
   ripgrep \
   the_silver_searcher \
   watch
