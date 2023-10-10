@@ -160,7 +160,7 @@ fi
 # perform a full mamba upgrade of base environment
 if type "mamba" > /dev/null; then
   do-mamba-upgrades() {
-    mamba update --name base --all
+    mamba update --yes --name base --all
   }
 else
   # do nothing if mamba is not installed
