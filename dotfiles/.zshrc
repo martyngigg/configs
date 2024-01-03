@@ -147,20 +147,20 @@ else
 fi
 
 # perform a full mamba upgrade of base environment
-if type "mamba" > /dev/null; then
-  do-mamba-upgrades() {
-    mamba update --yes --name base --all
+if type "conda" > /dev/null; then
+  do-conda-upgrades() {
+    conda update --yes --name base --all
   }
 else
   # do nothing if mamba is not installed
-  do-mamba-upgrades() {
+  do-conda-upgrades() {
   }
 fi
 
 # one-shot command to install all package updates
 do-package-upgrades() {
   do-brew-upgrades
-  do-mamba-upgrades
+  do-conda-upgrades
 }
 
 
