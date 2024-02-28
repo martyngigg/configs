@@ -149,7 +149,11 @@ fi
 # perform a full mamba upgrade of base environment
 if type "conda" > /dev/null; then
   do-conda-upgrades() {
-    conda update --yes --name base --all
+    # First pull in any Python updates as these are not caught by --all.
+    # This won't upgrade minor versions, only patches.
+    # Use conda install python=X.Y to upgrade to a newer line.
+    conda update --yes --name base --channel conda-forge python
+    conda update --yes --name base --channel conda-forge --all
   }
 else
   # do nothing if mamba is not installed
