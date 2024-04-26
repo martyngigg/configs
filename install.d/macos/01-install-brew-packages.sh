@@ -9,6 +9,7 @@ brew install \
   htop \
   limactl \
   mosh \
+  pwgen \
   nvm \
   ripgrep \
   the_silver_searcher \
