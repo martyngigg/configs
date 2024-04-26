@@ -76,40 +76,6 @@ export LESS=-FRX
 bindkey "^[^[[D" backward-word
 bindkey "^[^[[C" forward-word
 
-# Better cat/less
-# bat has a different name on ubunutu
-if type "batcat" > /dev/null; then
-    alias bat=batcat
-fi
-
-# source-highlighting with less
-if type "bat" > /dev/null; then
-    alias less=bat
-    # use less as the pager for bat
-    BAT_PAGER="less -RF"
-    export BAT_PAGER
-else
-    if type "highlight" > /dev/null; then
-      LESSOPEN="| $(command -v highlight) %s --out-format xterm256 --line-numbers --quiet --force --style solarized-dark"
-      export LESSOPEN
-    elif [ "$(command -v src-hilite-lesspipe.sh)" ]; then
-      LESSOPEN="| $(command -v src-hilite-lesspipe.sh) %s"
-      export LESSOPEN
-    fi
-    alias less='less -m -N -g -i -J --line-numbers --underline-special'
-    export LESS=' -R '
-fi
-
-# quick access to arguments of ripgrep
-if type "rg" > /dev/null; then
-    # --no-heading is useful to combine file:line number to easily open in other editors
-    alias rgnh='rg --no-heading'
-fi
-
-# docker-compose
-if type "docker-compose" > /dev/null; then
-  alias dcmp='docker-compose'
-fi
 
 # node
 export NVM_DIR="$HOME/.nvm"
