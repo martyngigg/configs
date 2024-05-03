@@ -9,8 +9,8 @@ export ZSH=$VCS_CFGS_DIR/thirdparty/oh-my-zsh
 # Local customizations
 ZSH_CUSTOM=$VCS_CFGS_DIR/custom-zsh
 
-# Use modified theme in custom directory
-ZSH_THEME="agnoster-modified"
+# Prompt theme
+ZSH_THEME="prince"
 
 # Disable marking untracked files under VCS as dirty.
 # This makes repository status check for large repositories much, much faster.
@@ -23,7 +23,6 @@ ZSH_DISABLE_COMPFIX="true"
 plugins=(
   colored-man-pages
   common-aliases
-  gitfast
   zsh-autosuggestions
 )
 if type "dircolors" > /dev/null; then
