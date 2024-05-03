@@ -9,6 +9,12 @@ dotfiles_dir=$(readlink -e dotfiles)
 assets=$(cd $dotfiles_dir && find . -maxdepth 1 -type f | xargs)
 link_assets $home $dotfiles_dir $assets
 
+# export any environment variables required by template files and install
+export CONDARC_PKG_DIR="  - $HOME/.cache/conda"
+templates=$(cd $dotfiles_dir && find . -maxdepth 1 -type f -name '*.template' | xargs)
+install_templates $home $dotfiles_dir $templates
+unset CONDARC_PKG_DIR
+
 # link emacs startup files
 emacs_d_dir=$home/.emacs.d
 if [ ! -d $emacs_d_dir/lisp ]; then

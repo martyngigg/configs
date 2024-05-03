@@ -1,0 +1,3 @@
+auto_activate_base: false
+pkgs_dirs:
+  ${CONDARC_PKG_DIR}

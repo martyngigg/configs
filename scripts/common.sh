@@ -61,3 +61,40 @@ function link_assets() {
     fi
   done
 }
+
+# Install all specified templates into the target directory, substituting
+# values from the current environment where necessary
+# @param $1 target directory for final file
+# @param $2 source directory
+# @param $3..$n list of files and directories to link
+install_templates() {
+  local target_dir=$1
+  local source_dir=$2
+  shift 2
+  info "installing templates from $source_dir -> $target_dir"
+  for template in $*; do
+    template=$(basename $template)
+    source=$source_dir/$template
+    target=$target_dir/${template/.template/}
+    if [[ ! -e $target ]]; then
+      info "  installing $source -> $target"
+    else
+      info "  re-installing $source -> $target"
+    fi
+    install_template $target $source
+  done
+}
+
+# Install a template to a target, backing up the original if one exists
+# @param $1 target The link name
+# @param $2 source the source for the link
+install_template() {
+  local target=$1
+  local source=$2
+  if [ -f $target ]; then
+    debug mv $target{,.bak}
+    mv $target{,.bak}
+  fi
+  debug envsubst < $source > $target
+  envsubst < $source > $target
+}
