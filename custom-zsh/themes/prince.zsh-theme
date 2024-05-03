@@ -74,15 +74,33 @@ prompt_status() {
   # RETCODE is set before the prompt processing begins in build_prompt so that the
   # value is not overwritten when other functions are called.
   [[ $RETCODE -ne 0 ]] && symbols+="%F{red}✘%f"
-  local fg
   [[ $UID -eq 0 ]] && symbols+="$warn_char "
 
   [[ -n "$symbols" ]] && echo -n "$symbols"
 }
 
+prompt_conda() {
+  [[ -n "$CONDA_PREFIX" ]] && echo -n "($(basename $CONDA_PREFIX))"
+}
 
 build_left_top() {
-  echo -n "╭╴$(prompt_status) $(prompt_user) $(prompt_dir) $(prompt_git)"
+  local segments=("╭╴")
+
+  # optional parts at beginning
+  local status_symbols=$(prompt_status)
+  [[ -n "$status_symbols" ]] && segments+="$status_symbols"
+  local status_conda=$(prompt_conda)
+  [[ -n "$status_conda" ]] && segments+="$status_conda"
+
+  # mandatory parts
+  segments+="$(prompt_user)"
+  segments+="$(prompt_dir)"
+
+  # optional parts at the end
+  local status_git=$(prompt_git)
+  [[ -n "$status_git" ]] && segments+="$status_git"
+
+  echo -n "$segments"
 }
 
 build_left_bottom() {

@@ -1,3 +1,4 @@
 auto_activate_base: false
+changeps1: false
 pkgs_dirs:
   ${CONDARC_PKG_DIR}
