@@ -23,10 +23,8 @@ ZSH_DISABLE_COMPFIX="true"
 plugins=(
   colored-man-pages
   common-aliases
-  debian
   gitfast
   zsh-autosuggestions
-  web-search
 )
 if type "dircolors" > /dev/null; then
   plugins+=(
