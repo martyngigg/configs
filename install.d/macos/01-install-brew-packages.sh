@@ -7,13 +7,15 @@ brew install \
   ccache \
   git \
   htop \
+  jq \
   limactl \
   mosh \
   pwgen \
   nvm \
   ripgrep \
   the_silver_searcher \
-  watch
+  watch \
+  yq
 
 # cask installs
 brew cask install \
