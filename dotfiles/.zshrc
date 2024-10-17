@@ -53,12 +53,8 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # Allow local customizations
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='emacs'
-fi
+# Preferred editor 
+export EDITOR='vim'
 
 # Activate command-not-found helpers
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
@@ -129,8 +125,6 @@ do-package-upgrades() {
   do-brew-upgrades
   do-conda-upgrades
 }
-
-
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/dmn58364/.rd/bin:$PATH"
