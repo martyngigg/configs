@@ -10,10 +10,12 @@ brew install \
   jq \
   limactl \
   mosh \
+  parquet-cli \
   pwgen \
   nvm \
   ripgrep \
   the_silver_searcher \
+  uv \
   watch \
   yq
 
