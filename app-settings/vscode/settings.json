@@ -1,0 +1,114 @@
+{
+  "workbench.colorTheme": "Solarized Light",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.startupEditor": "newUntitledFile",
+  "github.copilot.chat.useProjectTemplates": false,
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "'Inconsolata-g for Powerline', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.minimap.enabled": false,
+  "editor.rulers": [80],
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "editor.renderWhitespace": "all",
+  "[groovy]": {
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "editor.tabSize": 4,
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.analysis.exclude": ["**/condaenv"],
+  "python.condaPath": "/Users/dmn58364/opt/mambaforge/bin/conda",
+  "python.defaultInterpreterPath": "",
+  "python.languageServer": "Pylance",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "docker.languageserver.formatter.ignoreMultilineInstructions": true,
+  "esbonio.server.enabledInPyFiles": false,
+  "sql-formatter.uppercase": true,
+  "C_Cpp.clang_format_fallbackStyle": "LLVM",
+  "C_Cpp.autocomplete": "disabled",
+  "files.exclude": {
+    "**/.next": true,
+    "**/condaenv": true,
+    "**/dist": true,
+    "**/node_modules": true
+  },
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/build": true,
+    "**/builds/**": true,
+    "**/condaenv/**": true,
+    "**/dist/**": true
+  },
+  "search.exclude": {
+    "**/builds/**": true,
+    "**/condaenv/**": true
+  },
+  "cmakeFormat.exePath": "/usr/local/bin/cmake-format",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "autoDocstring.docstringFormat": "sphinx",
+  "rust-client.rustupPath": "/Users/dmn58364/.cargo/bin/rustup",
+  "cmake.generator": "Ninja",
+  "cmake.buildDirectory": "${workspaceFolder}/cpp/workspace-allocator/build",
+  "cmake.sourceDirectory": "${workspaceFolder}/cpp/workspace-allocator",
+  "cmake.configureOnEdit": false,
+  "cmake.allowCommentsInPresetsFile": true,
+  "testing.automaticallyOpenPeekView": "never",
+  "search.useParentIgnoreFiles": true,
+  "cmake.configureOnOpen": false,
+  "update.showReleaseNotes": false,
+  "rubyLsp.rubyVersionManager": "rbenv",
+  "bun.runtime": "/Users/dmn58364/.nvm/versions/node/v18.17.0/bin/bun",
+  "tailwindCSS.emmetCompletions": true,
+  "explorer.excludeGitIgnore": true,
+  "cmake.options.advanced": {
+    "build": {
+      "statusBarVisibility": "visible"
+    },
+    "launch": {
+      "statusBarVisibility": "visible"
+    },
+    "debug": {
+      "statusBarVisibility": "visible"
+    }
+  },
+  "cmake.showOptionsMovedNotification": false,
+  "terminal.integrated.showExitAlert": false,
+  "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.allowChords": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "jest.runMode": "on-demand",
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.autoFormatStrings": true
+}
