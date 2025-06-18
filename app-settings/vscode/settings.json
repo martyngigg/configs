@@ -9,7 +9,8 @@
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
   "editor.minimap.enabled": false,
-  "editor.rulers": [80],
+  "editor.rulers": [
+    100],
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,
@@ -24,9 +25,12 @@
     "files.trimFinalNewlines": true,
     "editor.tabSize": 4,
     "editor.formatOnType": true,
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "python.analysis.exclude": ["**/condaenv"],
+  "python.analysis.exclude": [
+    "**/condaenv",
+    "**/.venv"
+  ],
   "python.condaPath": "/Users/dmn58364/opt/mambaforge/bin/conda",
   "python.defaultInterpreterPath": "",
   "python.languageServer": "Pylance",
@@ -110,5 +114,15 @@
   },
   "jest.runMode": "on-demand",
   "python.analysis.typeCheckingMode": "standard",
-  "python.analysis.autoFormatStrings": true
+  "python.analysis.autoFormatStrings": true,
+  "[jinja-sql]": {},
+  "files.associations": {
+    "*.sql": "jinja-sql"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.defaultFormatter": "charliermarsh.ruff",
+  "ruff.nativeServer": "on",
+  "ruff.configuration": ""
 }
