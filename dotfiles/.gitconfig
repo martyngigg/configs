@@ -1,6 +1,7 @@
 [user]
     name = Martyn Gigg
     email = martyn.gigg@gmail.com
+    signingkey = /Users/dmn58364/.ssh/id_ed25519_github_gmail.pub
 [core]
     editor = vim
 [color]
@@ -141,3 +142,5 @@
     branch = auto
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
