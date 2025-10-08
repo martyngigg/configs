@@ -9,6 +9,7 @@ brew install \
   htop \
   jq \
   limactl \
+  mkcert \
   mosh \
   parquet-cli \
   pwgen \
