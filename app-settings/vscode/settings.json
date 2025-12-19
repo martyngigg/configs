@@ -9,8 +9,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
   "editor.minimap.enabled": false,
-  "editor.rulers": [
-    100],
+  "editor.rulers": [100],
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,
@@ -27,10 +26,7 @@
     "editor.formatOnType": true,
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "python.analysis.exclude": [
-    "**/condaenv",
-    "**/.venv"
-  ],
+  "python.analysis.exclude": ["**/condaenv", "**/.venv"],
   "python.condaPath": "/Users/dmn58364/opt/mambaforge/bin/conda",
   "python.defaultInterpreterPath": "",
   "python.languageServer": "Pylance",
@@ -44,7 +40,9 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.tabSize": 2,
+
   },
   "docker.languageserver.formatter.ignoreMultilineInstructions": true,
   "esbonio.server.enabledInPyFiles": false,
@@ -117,12 +115,45 @@
   "python.analysis.autoFormatStrings": true,
   "[jinja-sql]": {},
   "files.associations": {
-    "*.sql": "jinja-sql"
+    "*.sql": "jinja-sql",
+    "env-for-testing": "shellscript"
   },
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "editor.defaultFormatter": "charliermarsh.ruff",
   "ruff.nativeServer": "on",
-  "ruff.configuration": ""
+  "ruff.configuration": "",
+  "docker.extension.enableComposeLanguageServer": false,
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+  "docker.extension.dockerEngineAvailabilityPrompt": false,
+  "workbench.secondarySideBar.defaultVisibility": "visible",
+  "terminal.integrated.stickyScroll.enabled": false,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "python.terminal.shellIntegration.enabled": false,
+  "opa.dependency_paths.opa": "/Users/dmn58364/opa",
+  "terminal.integrated.suggest.enabled": false,
+  "markdownlint.config": {
+    "indentation": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "editor.detectIndentation": false
 }
