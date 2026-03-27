@@ -139,21 +139,24 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": true
+      "strings": true,
     },
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "[github-actions-workflow]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "python.terminal.shellIntegration.enabled": false,
   "opa.dependency_paths.opa": "/Users/dmn58364/opa",
   "terminal.integrated.suggest.enabled": false,
   "markdownlint.config": {
-    "indentation": true
+    "indentation": true,
   },
   "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
   },
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "chat.viewSessions.orientation": "stacked",
+  "remote.autoForwardPorts": false,
+  "debugpy.debugJustMyCode": false,
 }
