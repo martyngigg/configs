@@ -16,7 +16,7 @@
   "files.insertFinalNewline": true,
   "editor.renderWhitespace": "all",
   "[groovy]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "[python]": {
     "editor.formatOnSave": true,
@@ -24,25 +24,24 @@
     "files.trimFinalNewlines": true,
     "editor.tabSize": 4,
     "editor.formatOnType": true,
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "charliermarsh.ruff",
   },
   "python.analysis.exclude": ["**/condaenv", "**/.venv"],
   "python.condaPath": "/Users/dmn58364/opt/mambaforge/bin/conda",
   "python.defaultInterpreterPath": "",
   "python.languageServer": "Pylance",
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
     "editor.tabSize": 2,
-
   },
   "docker.languageserver.formatter.ignoreMultilineInstructions": true,
   "esbonio.server.enabledInPyFiles": false,
@@ -53,26 +52,26 @@
     "**/.next": true,
     "**/condaenv": true,
     "**/dist": true,
-    "**/node_modules": true
+    "**/node_modules": true,
   },
   "files.watcherExclude": {
     "**/.next/**": true,
     "**/build": true,
     "**/builds/**": true,
     "**/condaenv/**": true,
-    "**/dist/**": true
+    "**/dist/**": true,
   },
   "search.exclude": {
     "**/builds/**": true,
-    "**/condaenv/**": true
+    "**/condaenv/**": true,
   },
   "cmakeFormat.exePath": "/usr/local/bin/cmake-format",
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
+    "*.ipynb": "jupyter-notebook",
   },
   "notebook.cellToolbarLocation": {
     "default": "right",
-    "jupyter-notebook": "left"
+    "jupyter-notebook": "left",
   },
   "autoDocstring.docstringFormat": "sphinx",
   "rust-client.rustupPath": "/Users/dmn58364/.cargo/bin/rustup",
@@ -91,14 +90,14 @@
   "explorer.excludeGitIgnore": true,
   "cmake.options.advanced": {
     "build": {
-      "statusBarVisibility": "visible"
+      "statusBarVisibility": "visible",
     },
     "launch": {
-      "statusBarVisibility": "visible"
+      "statusBarVisibility": "visible",
     },
     "debug": {
-      "statusBarVisibility": "visible"
-    }
+      "statusBarVisibility": "visible",
+    },
   },
   "cmake.showOptionsMovedNotification": false,
   "terminal.integrated.showExitAlert": false,
@@ -108,7 +107,7 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
   },
   "jest.runMode": "on-demand",
   "python.analysis.typeCheckingMode": "standard",
@@ -116,16 +115,16 @@
   "[jinja-sql]": {},
   "files.associations": {
     "*.sql": "jinja-sql",
-    "env-for-testing": "shellscript"
+    "env-for-testing": "shellscript",
   },
   "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
+    "editor.defaultFormatter": "vscode.html-language-features",
   },
   "ruff.nativeServer": "on",
   "ruff.configuration": "",
   "docker.extension.enableComposeLanguageServer": false,
   "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
   },
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
