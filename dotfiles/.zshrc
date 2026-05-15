@@ -1,3 +1,7 @@
+# Uncomment this to profile shell startup
+# Also requires uncommenting line at the end of the file
+# zmodload zsh/zprof
+
 # ------------------------------------------------------------------------------
 # Oh My Zsh configuration
 # ------------------------------------------------------------------------------
@@ -20,9 +24,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 ZSH_DISABLE_COMPFIX="true"
 
 # Plugins
+zstyle ':omz:plugins:nvm' lazy yes
 plugins=(
   colored-man-pages
   common-aliases
+  nvm
   zsh-autosuggestions
 )
 if type "dircolors" > /dev/null; then
@@ -69,11 +75,6 @@ export LESS=-FRX
 bindkey "^[^[[D" backward-word
 bindkey "^[^[[C" forward-word
 
-
-# node
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 # -----------------------------------------------------------------------------
 
 # >>> conda initialize >>>
@@ -132,3 +133,7 @@ alias doco="docker compose"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/dmn58364/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Uncomment to profile the shell startup time
+# # Also requires line at the top of the file to be uncommented
+# zprof
