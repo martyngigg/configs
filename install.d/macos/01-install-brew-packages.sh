@@ -5,6 +5,7 @@
 brew install \
   bat \
   ccache \
+  fish \
   git \
   htop \
   jq \
