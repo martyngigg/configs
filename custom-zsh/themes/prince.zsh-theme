@@ -79,18 +79,12 @@ prompt_status() {
   [[ -n "$symbols" ]] && echo -n "$symbols"
 }
 
-prompt_conda() {
-  [[ -n "$CONDA_PREFIX" ]] && echo -n "($(basename $CONDA_PREFIX))"
-}
-
 build_left_top() {
   local segments=("╭╴")
 
   # optional parts at beginning
   local status_symbols=$(prompt_status)
   [[ -n "$status_symbols" ]] && segments+="$status_symbols"
-  local status_conda=$(prompt_conda)
-  [[ -n "$status_conda" ]] && segments+="$status_conda"
 
   # mandatory parts
   segments+="$(prompt_user)"
