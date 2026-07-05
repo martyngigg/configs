@@ -59,7 +59,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # Allow local customizations
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 
-# Preferred editor 
+# Preferred editor
 export EDITOR='vim'
 
 # Activate command-not-found helpers
@@ -77,21 +77,6 @@ bindkey "^[^[[C" forward-word
 
 # -----------------------------------------------------------------------------
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dmn58364/opt/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/dmn58364/opt/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/dmn58364/opt/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/dmn58364/opt/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # Packaging-related aliases
 # perform a full brew upgrade
 if type "brew" > /dev/null; then
@@ -106,28 +91,12 @@ else
   }
 fi
 
-# perform a full mamba upgrade of base environment
-if type "conda" > /dev/null; then
-  do-conda-upgrades() {
-    # First pull in any Python updates as these are not caught by --all.
-    # This won't upgrade minor versions, only patches.
-    # Use conda install python=X.Y to upgrade to a newer line.
-    conda update --yes --name base --channel conda-forge python
-    conda update --yes --name base --channel conda-forge --all
-  }
-else
-  # do nothing if mamba is not installed
-  do-conda-upgrades() {
-  }
-fi
-
 # one-shot command to install all package updates
 do-package-upgrades() {
   do-brew-upgrades
-  do-conda-upgrades
 }
 
-# Docker aliases
+# Aliases
 alias doco="docker compose"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
