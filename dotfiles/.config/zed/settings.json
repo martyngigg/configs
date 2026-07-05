@@ -1,0 +1,69 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "instrumentation": {
+    "performance_profiler": {
+      "enabled": false
+    }
+  },
+  "debugger": {
+    "timeout": 10000
+  },
+  "show_wrap_guides": true,
+  "cli_default_open_behavior": "new_window",
+  "vim_mode": false,
+  "agent_servers": {
+    "gemini": {
+      "type": "registry"
+    }
+  },
+  "remove_trailing_whitespace_on_save": true,
+  "show_whitespaces": "all",
+  "languages": {
+    "Python": {
+      "preferred_line_length": 100,
+    },
+  },
+  "base_keymap": "Emacs",
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "granite4.1:3b",
+      "enable_thinking": false
+    },
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "relative_line_numbers": "enabled",
+  "theme": {
+    "mode": "light",
+    "light": "Solarized Light",
+    "dark": "Solarized Dark",
+  },
+  "auto_install_extensions": {
+    "git-firefly": true,
+    "ruff": true,
+    "toml": true
+  }
+}

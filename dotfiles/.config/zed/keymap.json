@@ -1,0 +1,87 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-y": "editor::KillRingYank",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-y": "editor::Paste",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-delete": [
+        "editor::DeleteToNextWordEnd",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false,
+        },
+      ],
+      "alt-backspace": [
+        "editor::DeleteToPreviousWordStart",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "alt-d": [
+        "editor::DeleteToNextWordEnd",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-;": "editor::ToggleComments",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-x ctrl-;": "editor::ToggleComments",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-w": [
+        "editor::DeleteToPreviousWordStart",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false,
+        },
+      ],
+    },
+  },
+]
