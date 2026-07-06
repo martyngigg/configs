@@ -16,7 +16,12 @@ if [ $(id -u) -ne 0 ]; then
     info script requires root access but sudo command not found
     exit 1
   fi
-  info script requires root privileges, sudo password will be requested
+  if sudo ls > /dev/null 2>&1; then
+    info script requires raised privileges, sudo password will be requested.
+  else
+    info "sudo check failed. Have you raised Privileges?"
+    exit 1
+  fi
 fi
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
