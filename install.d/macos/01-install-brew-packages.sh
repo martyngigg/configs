@@ -4,7 +4,6 @@
 # standard formulae
 brew install \
   bat \
-  ccache \
   fish \
   git \
   htop \
@@ -16,13 +15,11 @@ brew install \
   pwgen \
   nvm \
   ripgrep \
-  the_silver_searcher \
   uv \
   watch \
   yq
 
 # cask installs
-brew cask install \
-  virtualbox \
-  iterm2 \
-  visual-studio-code
+brew install --cask \
+  visual-studio-code \
+  zed
