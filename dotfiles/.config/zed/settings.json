@@ -7,27 +7,39 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "format_on_save": "on",
+  "auto_signature_help": true,
+  "show_signature_help_after_edits": true,
+  "terminal": {
+    "font_weight": 400.0,
+    "font_size": 15.0,
+  },
   "instrumentation": {
     "performance_profiler": {
-      "enabled": false
-    }
+      "enabled": false,
+    },
   },
   "debugger": {
-    "timeout": 10000
+    "timeout": 10000,
   },
   "show_wrap_guides": true,
   "cli_default_open_behavior": "new_window",
   "vim_mode": false,
   "agent_servers": {
     "gemini": {
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "remove_trailing_whitespace_on_save": true,
   "show_whitespaces": "all",
   "languages": {
     "Python": {
-      "preferred_line_length": 100,
+      "language_servers": ["pyright", "ruff"],
+      "formatter": [
+        {
+          "language_server": { "name": "ruff" },
+        },
+      ],
     },
   },
   "base_keymap": "Emacs",
@@ -44,7 +56,7 @@
     "default_model": {
       "provider": "ollama",
       "model": "granite4.1:3b",
-      "enable_thinking": false
+      "enable_thinking": false,
     },
     "dock": "right",
     "favorite_models": [],
@@ -53,7 +65,7 @@
   "git_panel": {
     "dock": "left",
   },
-  "ui_font_size": 16,
+  "ui_font_size": 15.0,
   "buffer_font_size": 15,
   "relative_line_numbers": "enabled",
   "theme": {
@@ -64,6 +76,6 @@
   "auto_install_extensions": {
     "git-firefly": true,
     "ruff": true,
-    "toml": true
-  }
+    "toml": true,
+  },
 }
