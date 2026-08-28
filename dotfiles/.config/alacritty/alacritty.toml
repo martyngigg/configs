@@ -1,0 +1,7 @@
+[general]
+#import = [
+#    "~/.config/alacritty/themes/solarized_light.toml"
+#]
+
+[font]
+size = 13.0
