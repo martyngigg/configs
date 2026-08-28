@@ -46,7 +46,7 @@ set hlsearch                          "Highlight search results
 set cursorline                        "Highlight the line the cursor is on
 set list                              "Show whitespace
 set listchars=tab:→\                  "Show tabs as arrows, don't show eol
-set colorcolumn=80                    "Highlight the 80th column
+set colorcolumn=100                    "Highlight the 80th column
 
 "Statusbar and line numbering
 set laststatus=2                      "Statusbar should be double height
@@ -86,64 +86,3 @@ au BufRead,BufNewFile *.md setlocal filetype=markdown.pandoc spell spelllang=en_
 au BufRead,BufNewFile *.txt setlocal spell spelllang=en_gb
 au BufRead,BufNewFile *.tex setlocal spell spelllang=en_gb
 au BufRead,BufNewFile *.fountain setlocal filetype=fountain linebreak spell spelllang=en_gb
-
-"================="
-"Install Plugins.
-"================="
-" Setting up Vundle - the vim plugin bundler
-filetype off                            "Disable autodetection while installing plugins
-let vundle_installed=1
-let vundle_readme=s:editor_root . '/bundle/vundle/README.md'
-if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
-    echo ""
-    silent call mkdir(s:editor_root . '/bundle', "p")
-    silent execute "!git clone https://github.com/gmarik/vundle " . s:editor_root . "/bundle/vundle"
-    let vundle_installed=0
-endif
-let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
-call vundle#rc(s:editor_root . '/bundle')
-
-"Plugins
-Plugin 'gmarik/vundle.vim'                "Required
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'bfrg/vim-cpp-modern'
-"Plugin 'ycm-core/YouCompleteMe'
-
-if vundle_installed == 0
-    echo "Installing plugins, please ignore key map error messages"
-    echo ""
-    :PluginInstall
-endif
-" Setting up Vundle - the vim plugin bundler end
-
-filetype plugin indent on                "Renable file-type detection
-
-"================="
-"Plugins Settings
-"================="
-"Solarized theme
-set background=light
-colorscheme solarized
-highlight SignColumn ctermbg=8
-
-"Git Gutter
-let g:gitgutter_highlight_lines = 1
-let g:gitgutter_sign_column_always = 1
-
-"Airline
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-let g:airline_detect_spell = 0
-let g:airline_detect_modified = 1
-let g:airline_theme="solarized"
-let g:airline_solarized_normal_green = 1
-
-"YouCompleteMe
-"let g:ycm_auto_trigger = 1
