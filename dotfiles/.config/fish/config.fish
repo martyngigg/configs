@@ -1,0 +1,3 @@
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/dmn58364/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

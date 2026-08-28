@@ -1,26 +1,29 @@
 function fish_prompt
-        if not set -q VIRTUAL_ENV_DISABLE_PROMPT
-                set -g VIRTUAL_ENV_DISABLE_PROMPT true
-        end
-        set_color yellow
-        printf '%s' $USER
-        set_color --reset
-        printf '@'
+    if not set -q VIRTUAL_ENV_DISABLE_PROMPT
+        set -g VIRTUAL_ENV_DISABLE_PROMPT true
+    end
+    set_color yellow
+    printf '%s' $USER
+    set_color --reset
+    printf '@'
 
-        set_color magenta
-        echo -n (prompt_hostname)
-        set_color --reset
-        printf ' in '
+    set_color magenta
+    echo -n (prompt_hostname)
+    set_color --reset
+    printf ' in '
 
-        set_color $fish_color_cwd
-        printf '%s' (prompt_pwd)
-        set_color --reset
+    set_color $fish_color_cwd
+    printf '%s' (prompt_pwd)
+    set_color --reset
 
-        # Line 2
-        echo
-        if test -n "$VIRTUAL_ENV"
-                printf "(%s) " (set_color blue)(path basename $VIRTUAL_ENV)(set_color --reset)
-        end
-        printf '↪ '
-        set_color --reset
+    set -g __fish_git_prompt_showcolorhints 1
+    set -g __fish_git_prompt_showdirtystate 1
+    echo -n (fish_git_prompt)
+    # Line 2
+    echo
+    if test -n "$VIRTUAL_ENV"
+            printf "(%s) " (set_color blue)(path basename $VIRTUAL_ENV)(set_color --reset)
+    end
+    printf '↪ '
+    set_color --reset
 end
