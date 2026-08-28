@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "allow_data_collection": "no",
+  },
   "format_on_save": "on",
   "auto_signature_help": true,
   "show_signature_help_after_edits": true,
