@@ -27,29 +27,28 @@ function exit_if_command_not_available {
 }
 
 # Link a source to a target, backing up the original if it is not a link
-# @param $1 target The link name
-# @param $2 source the source for the link
+# @param $1 source the source for the link
+# @param $2 target The link name
 function link_asset() {
   local link_cmd="ln -s"
-  local target=$1
-  local source=$2
+  local source=$1
+  local target=$2
   if [ -L $target ]; then
-    debug mv $target{,.bak}
-    mv $target{,.bak}
+      echo "Skipping link $target. Link already exists."
+      return
   fi
   debug $link_cmd $source $target
   $link_cmd $source $target
 }
 
 # Link all specified assets to the given directory
-# @param $1 target directory for link
-# @param $2 source directory
+# @param $1 source directory
+# @param $2 target directory for link
 # @param $3..$n list of files and directories to link
 function link_assets() {
-  local target_dir=$1
-  shift 1
   local source_dir=$1
-  shift 1
+  local target_dir=$2
+  shift 2
   info "linking new assets from $source_dir -> $target_dir"
   for asset in $*; do
     asset=$(basename $asset)
@@ -57,7 +56,7 @@ function link_assets() {
     target=$target_dir/$asset
     if [[ ! -e $(readlink $target) ]]; then
       info "  linking $source -> $target"
-      link_asset $target $source
+      link_asset $source $target
     fi
   done
 }

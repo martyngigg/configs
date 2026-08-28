@@ -31,10 +31,9 @@ run_with_sudo apt-get -y install \
   curl \
   dconf-cli \
   docker.io \
-  emacs \
-  emacs-goodies-el \
   evince \
   fakeroot \
+  fish \
   firefox \
   fonts-inconsolata \
   fonts-powerline \
@@ -44,12 +43,11 @@ run_with_sudo apt-get -y install \
   mosh \
   openssh-client \
   powerline \
+  ripgrep \
   screen \
   tmux \
-  silversearcher-ag \
   software-properties-common \
-  xsel \
-  zsh
+  xsel
 
 if [ $(id -u) -neq 0 ]; then
   info adding $(whoami) to docker group - log out for changes to take effect
@@ -58,4 +56,3 @@ if [ $(id -u) -neq 0 ]; then
   info removing run_with_sudo credential cache
   sudo -K
 fi
-

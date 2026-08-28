@@ -4,5 +4,9 @@
 # common utilities
 source scripts/common.sh
 
-info "Setting default shell to ZSH for current user"
-chsh -s $(which zsh) $(whoami)
+new_default_shell=$(command -v fish)
+if [ "$SHELL" != "$new_default_shell" ]; then
+  info "Setting default shell to FISH for current user"
+  command -v fish | sudo tee -a /etc/shells
+  chsh -s "$new_default_shell"
+fi
