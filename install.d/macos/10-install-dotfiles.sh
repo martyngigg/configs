@@ -11,6 +11,6 @@ link_assets $dotfiles_dir $home $assets
 
 # .config directories
 test -d $home/.config || mkdir ~/.config
-for name in fish zed alacritty; do
+for name in alacritty fish opencode zed; do
   link_asset $dotfiles_dir/.config/$name $home/.config/$name
 done
